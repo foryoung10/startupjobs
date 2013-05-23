@@ -5,17 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
-	<!--
-        <!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
-         <!--   
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-         -->
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -101,17 +91,19 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-            <!--<li>ABOUT US</ul>
-            <ul>TESTIMONIAL</ul>
-            <ul>BLOG</ul>
-            <ul>ADVISORS</ul>
-            <ul>EVENTS</ul>
-            <ul>PRESS RELEASE</ul>
-            <ul>CONNECT</ul>
-            -->
-		Copyright &copy; <?php echo date('Y'); ?> by  Startup Jobs Asia.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+	<ul class="nav nav-pills">    
+		<li>ABOUT US</li>
+        <li>TESTIMONIAL</li>
+        <li>BLOG</li>
+        <li>ADVISORS</li>
+        <li>EVENTS</li>
+        <li>PRESS RELEASE</li>
+        <li>CONNECT</li>
+    </ul>
+
+
+		<div>Copyright &copy; <?php echo date('Y'); ?> by  Startup Jobs Asia. All Rights Reserved.</div>
+
 	</div><!-- footer -->
 
 </div><!-- page -->

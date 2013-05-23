@@ -2,7 +2,11 @@
     padding-top: 60px;
 }
 
-
+.clear
+{
+clear:both;
+float:none;
+}
 #footer
 {
 	padding: 10px;
