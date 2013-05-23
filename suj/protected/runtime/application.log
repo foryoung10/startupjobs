@@ -1389,3 +1389,90 @@ Stack trace:
 REQUEST_URI=/yii/suj/index.php/job/latest?job_page=2
 HTTP_REFERER=http://localhost/yii/suj/index.php/job/latest
 ---
+2013/05/23 11:05:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/gridView.css".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('css/gridView.cs...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/css/gridView.css
+HTTP_REFERER=http://localhost/git/startupjobs/suj/job/latest
+---
+2013/05/23 11:06:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\actions\CViewAction.php:112
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\actions\CViewAction.php(123): CViewAction->resolveView('index')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\web\actions\CAction.php(76): CViewAction->run()
+#2 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CController.php(308): CAction->runWithParams(Array)
+#3 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CController.php(286): CController->runAction(Object(CViewAction))
+#4 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(282): CController->run('page')
+#6 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('site/page')
+#7 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/git/startupjobs/suj/site/page?about=success
+HTTP_REFERER=http://localhost/git/startupjobs/suj/registration/registration
+---
+2013/05/23 11:07:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/gridView.css".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('css/gridView.cs...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/css/gridView.css
+HTTP_REFERER=http://localhost/git/startupjobs/suj/job/latest
+---
+2013/05/23 11:28:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/img/glyphicons-halflings.png".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/img/glyp...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/assets/img/glyphicons-halflings.png
+HTTP_REFERER=http://localhost/git/startupjobs/suj/assets/e3ecaab1/css/bootstrap.css
+---
+2013/05/23 11:31:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/gridView.css".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('css/gridView.cs...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/css/gridView.css
+HTTP_REFERER=http://localhost/git/startupjobs/suj/job/latest
+---
+2013/05/23 11:31:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/img/glyphicons-halflings.png".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/img/glyp...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/assets/img/glyphicons-halflings.png
+HTTP_REFERER=http://localhost/git/startupjobs/suj/assets/e3ecaab1/css/bootstrap.css
+---
+2013/05/23 11:31:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/gridView.css".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('css/gridView.cs...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/css/gridView.css
+HTTP_REFERER=http://localhost/git/startupjobs/suj/job/latest?job_page=2
+---
+2013/05/23 11:31:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/gridView.css".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('css/gridView.cs...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/css/gridView.css
+HTTP_REFERER=http://localhost/git/startupjobs/suj/job/latest?job_page=3
+---
+2013/05/23 11:42:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/gridView.css".' in E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\git\startupjobs\suj\framework\web\CWebApplication.php(141): CWebApplication->runController('css/gridView.cs...')
+#1 E:\xampp\htdocs\git\startupjobs\suj\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\git\startupjobs\suj\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/startupjobs/suj/css/gridView.css
+HTTP_REFERER=http://localhost/git/startupjobs/suj/job/latest
+---

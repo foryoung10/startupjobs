@@ -1,3 +1,7 @@
 suj/protected/config/main.php
 suj/index.php
 suj/framework
+suj/assets
+
+.log
+.project
