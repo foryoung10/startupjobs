@@ -1,7 +1,11 @@
-suj/protected/config/main.php
+## generic files to ignore
+*~
+suj/protected/config
 suj/index.php
 suj/framework
 suj/assets
+
+suj/protected/runtime
 
 .log
 .project
