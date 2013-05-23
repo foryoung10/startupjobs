@@ -18,7 +18,8 @@ $this->pageTitle=Yii::app()->name;
     <div class="row-fluid">
       <div class="span8">
       
-      <h1>Jobs</h1>
+      <h1>Premium Jobs</h1>
+       <div class="span8">
 <?php
         $premium=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'limit'=>3,
@@ -26,7 +27,7 @@ $this->pageTitle=Yii::app()->name;
                                                                     ),
                                                                     'pagination' => false
                                                 )); ?>
-        <table class="table ">
+       
  <?php       $this->widget('bootstrap.widgets.TbListView', array(
             'dataProvider'=>$premium,
             'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
@@ -39,6 +40,10 @@ $this->pageTitle=Yii::app()->name;
             
 ));
  ?>
+ </div>
+ <div class="clear"></div>
+ <h1>Latest Jobs</h1>
+ <div class="span8">
 <?php
         $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'order'=>'created DESC',
@@ -48,7 +53,7 @@ $this->pageTitle=Yii::app()->name;
                                                                                         'pageSize'=>15,
                                                                     ),
                                                 )); ?>
-        <table class="table ">
+        
  <?php       $this->widget('bootstrap.widgets.TbListView', array(
             'dataProvider'=>$dataProvider,
             'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
@@ -63,7 +68,7 @@ $this->pageTitle=Yii::app()->name;
     ),
 ));
  ?>
-</table>
+</div>
     </div>
 
 </div>
