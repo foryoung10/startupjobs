@@ -35,7 +35,7 @@ $this->pageTitle=Yii::app()->name;
             'itemsTagName'=>'table',
             'itemsCssClass'=>'table',
             'summaryText'=>'',
-            'ajaxUpdate'=>false,
+            //'ajaxUpdate'=>false,
             //'htmlOptions' => array("class"=>"table table-striped"),   
             
 ));
@@ -58,7 +58,7 @@ $this->pageTitle=Yii::app()->name;
             'dataProvider'=>$dataProvider,
             'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
             'itemView'=>'_jobView',   // refers to the partial view named '_post'
-            'ajaxUpdate'=>false,
+            //'ajaxUpdate'=>false,
             //'htmlOptions' => array("class"=>"table table-striped"),   
             'sortableAttributes'=>array(
             'title',
