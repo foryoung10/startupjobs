@@ -16,19 +16,21 @@ $this->breadcrumbs = array(
             <div class="span8">
                 <h3> About </h3>
                 <?php   echo count($job);
-                        echo CHtml::encode($company->about) ?>
+                        echo str_replace('</br>',"",$company->about); 
+                        
+                        //echo CHtml::encode($company->about) ?>
                 <?php if (count($job)>0):?>
                         <h3> Available Jobs </h3>
                 <?php foreach($job as $job): ?>
                         <?php echo CHtml::link($job->title, array('job/job', 'JID' => $job->JID)) ; ?>
                         <p>Job Title: <?php echo $job->title; ?> </p>
-                        <p>Description: <?php echo $job->description; ?></p>
+                        <p>Description: <?php echo str_replace('</br>',"",$job->description); ?></p>
                 <?php endforeach; ?>
                 <?php endif?>
             </div>
             <div class="span3 offset1">
                 <h3> Address </h3>
-                <?php echo CHtml::encode($company->address) ?>
+                <?php echo str_replace('</br>',"",$company->address);?>
                 <h3> Contact </h3>
                 <?php echo CHtml::encode($company->contact) ?>
        </div>

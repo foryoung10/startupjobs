@@ -14,23 +14,19 @@ Please fill out the form with your particulars
                                                                                 'type'=>'horizontal',
                                                                                 'enableClientValidation'=>true,
                                                                                 'clientOptions'=>array('validateOnSubmit'=>true,),
+                                                                                'htmlOptions' => array('enctype' => 'multipart/form-data'),
+                                                                             
                                                                                 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	<?php echo $form->errorSummary($model); ?>
-        <?php echo $form->textFieldRow($model, 'cname', array('size' =>40)); ?>
-        <?php echo $form->textFieldRow($model, 'cemail', array('size' => 40, 'rows' => 1)); ?>
-
-        <?php if (CCaptcha::checkRequirements()): ?>
-                       
-                       
-                       <div class="hint">Please enter the letters as they are shown in the image above.
-                            <br/>Letters are not case-sensitive.</div>
-                            <?php echo $form->error($model, 'verifyCode'); ?>
-                       <?php echo $form->captcharow($model,'verifyCode'); ?>
-                        </div>        
-      <?php endif; ?>
-      <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Submit')); ?>
+        <?php echo $form->textFieldRow($model, 'cname', array('class'=>'span5')); ?>
+        <?php echo $form->fileFieldRow($model, 'image'); ?>  
+        <?php echo $form->textFieldRow($model, 'cemail', array('class' => 'span5', 'rows' => 1)); ?>
+        <?php echo $form->textFieldRow($model, 'contact', array('class' => 'span5', 'rows' => 1)); ?>
+        <?php echo $form->textAreaRow($model,'address', array('class'=>'span6', 'rows'=>3)); ?>
+        <?php echo $form->textAreaRow($model,'about', array('class'=>'span6', 'rows'=>8)); ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Submit')); ?>
 
 <?php $this->endWidget(); ?>
 

@@ -5,9 +5,8 @@
 class AdminController extends Controller
 {
      public function actionManage() {
-          $data = approve::model()->with('company')->findAll();
           
-          $this->render('approve',$data);
+          $this->render('approve');
           
     }
 
@@ -19,8 +18,9 @@ class AdminController extends Controller
                 $company->save();
                 $approve = approve::model()->find('CID=:CID',array(':CID'=>$CID));
                 $approve -> approved = new CDbExpression('NOW()');
-                $approve ->status = 1;
-                $approve->save();
+               // $approve ->status = 1;
+                if ($approve->save())
+                    $this->redirect(array('admin/manage'));
     }
 
     public function actionModify($id) {

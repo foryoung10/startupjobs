@@ -39,17 +39,17 @@ class CompanyController extends Controller
         $company = company::model()->find('ID=:ID', array('ID' => $ID));
         //CActiveRecord for old one
         $CForm->attributes = $company->attributes;
-  //      $CForm->about = str_replace('<br />', "", $company->about);
+        $CForm->address = str_replace('<br />', "", $company->address);
+        $CForm->about = str_replace('<br />', "", $company->about);
         if (isset($_POST['CompanyForm'])) {
                     $CForm->attributes = $_POST['CompanyForm'];
                     $company->cname = $CForm->cname;
                     $company->about = nl2br($CForm->about);
                     $company->address = nl2br($_POST['addressId']);
                     $company->contact=$CForm->contact;
-                     $uploadedFile=CUploadedFile::getInstance($CForm,'image');
+                    $uploadedFile=CUploadedFile::getInstance($CForm,'image');
                      if (!empty($uploadedFile)) {      
-                     
-                                    $fileName = "{$CID}-{$uploadedFile}";  // random number + file name
+                                    $fileName = "{$company->CID}-{$uploadedFile}";  // random number + file name
                                     $company->image = $fileName;
                          }          
                      if ($company->save())   {
@@ -58,7 +58,7 @@ class CompanyController extends Controller
                          }   
                      }    
                          
-          $this->redirect(array('company/myProfile'));
+          $this->redirect(array('company/Company'));
                     
                     }             
        

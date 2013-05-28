@@ -22,18 +22,18 @@
                                      array(
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'items'=>array(
-                                                        array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                                                        array('label'=>'Contact', 'url'=>array('/site/contact')),
+                                                        // array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+                                                        //array('label'=>'Contact', 'url'=>array('/site/contact')),
                                                         //array('label'=>'Register', 'url'=>array('/registration/registration')),
                                                         //array('label'=>'Jobs', 'url'=>array('/job/all')),
                                                         array('label'=>'Registration', 'url'=>array('/registration/registration'),'visible'=>Yii::app()->user->isGuest),
                                                         array('label'=>'Register Company', 'url'=>array('/registration/registerCompany'),'visible'=>Yii::app()->user->isMember()),
                                                         array('label'=>'Submit a job', 'url'=>array('/job/submitJob'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Company', 'url'=>array('/company/company'),'visible'=>Yii::app()->user->isCompany()),
-                                                        array('label'=>'Edit', 'url'=>array('/company/update'),'visible'=>Yii::app()->user->isAdmin()),
+                                                        array('label'=>'Edit', 'url'=>array('/company/update'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Manage', 'url'=>array('/admin/manage'),'visible'=>Yii::app()->user->isAdmin()),
                                                         array('label'=>'Manage Jobs', 'url'=>array('/job/manageJobs'),'visible'=>Yii::app()->user->isCompany()),
-                                                        array('label'=>'Upgrade', 'url'=>array('/company/upgrade'),'visible'=>Yii::app()->user->isCompany()),
+                                                     //   array('label'=>'Upgrade', 'url'=>array('/company/upgrade'),'visible'=>Yii::app()->user->isCompany()),
                                                         
                                             ),
                                     ),

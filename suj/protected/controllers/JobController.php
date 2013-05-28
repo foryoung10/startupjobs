@@ -35,11 +35,12 @@ class JobController extends Controller {
                                       $record->description = $model->description;
                                       $record->type = $model->type;
                                       $record->salary = $model->salary;
+                                      $record->location = $model->location;
                                       $record->CID = $company->CID;
                                       // increment job count by one
                                       if ($record->save()) {      
                                             $JID=$record->JID;           //redirect  
-                                            $this->redirect(array('job/job','JID' => $JID));
+                                            $this->redirect(array('job/premium','JID' => $JID));
                                        }
                         }   
         }
@@ -47,13 +48,33 @@ class JobController extends Controller {
         $this->render('submitJob', array('model' => $model));
     }
     
+    public function actionPremium($JID) {
+        
+       if(true) {
+           $job = job::model()->find('JID=:JID',  array(':JID' => $JID, ));
+           $job->premium = 1;
+           $job->save();
+       } 
+       
+        $this->render('premium');
+    }
+    
+    
     public function actionUpdate($JID) {
         $ID = Yii::app()->user->getID();
         $model = new JobForm;
-        $job = job::model()->with('company')->find('JID=:JID' AND 'ID=:ID',  array(':JID' => $JID, ':ID'=>$ID));
+        //$job = job::model()->with('company')->find('JID=:JID' ,  array(':JID' => $JID, ));
+       
+       //  if (!($favourite = favourite::model()->find('profileID=:profileID&&friendID=:friendID', array(':profileID' => $model1->profileID,
+         //   ':friendID' => $model1->friendID))))
+       
+        //need to check company id as well...
+        //potential error
+        $job = job::model()->with('company')->find('JID=:JID&&ID=:ID',  array(':JID' => $JID, ':ID'=>$ID));
         //CActiveRecord for old one
-        $model->attributes = $job->attributes;
-  //    $CForm->about = str_replace('<br />', "", $company->about);
+        if ($job !=null)
+            $model->attributes = $job->attributes;
+        //$model->about = str_replace('<br />', "", $company->about);
         if (isset($_POST['JobForm'])) {
                     $model->attributes = $_POST['JobForm'];
                     $job->title = $model->title;
@@ -68,7 +89,7 @@ class JobController extends Controller {
                     
         }             
         $this->render('update', array('model' => $model, 
-                                          'job' => $job, ));
+                                      'job' => $job, ));
     }
     
     public function actionJob($JID) {

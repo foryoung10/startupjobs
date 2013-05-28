@@ -11,6 +11,14 @@ class user extends CActiveRecord {
             
         );
     }
+
+    public function relations() {
+        return array(
+        // other relations
+                'company'=> array(self::BELONGS_TO, 'company', 'CID'),
+        
+        );
+    } 
 }
 
 ?>

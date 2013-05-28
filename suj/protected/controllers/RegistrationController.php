@@ -58,39 +58,54 @@ class RegistrationController extends Controller {
     
     
        public function actionRegisterCompany() {
-
+         
         $model = new CompanyForm;
+        
         if (isset($_POST['CompanyForm'])) {
-                
+              $ID = Yii::app()->user->getID();
               $model->attributes = $_POST['CompanyForm'];
-              if ($model->validate()) {       //generate activation key
+                     //generate activation ke
                 $company = new company;
-                $approve = new approve; 
-                // Save into employee
+                  
+                $company->ID = $ID;
+                $company->address = $model->address;
+                $company->contact = $model->contact;
                 $company->cname = $model->cname;
-                $company->about = $model->about;
+                $company->about = nl2br($model->about);
                 $company->cemail = $model->cemail;
                 $company->status = 0;
-                $company->save();
                 
-                $approve->CID = $company->CID;
-                $approve->save();
+                if ($company->save())   {
+                    $uploadedFile=CUploadedFile::getInstance($model,'image');
+                    if (!empty($uploadedFile)) {      
+                          
+                                  $fileName = "{$company->CID}-{$uploadedFile}";  // random number + file name
+                                 $company->image = $fileName;
+                     }              
+                        if ($company->save())       
+                            $uploadedFile->saveAs(Yii::app()->basepath.'/../images/company/'.$fileName);  // image will uplode to rootDirectory/banner    
+                         }   
+                    $user=user::model()->find(':ID=ID', array('ID'=>$ID));
+                    $user-> role = 2;
+                    $user->CID = $company->CID;
+                    $user->save();
                 
-                $baseUrl = Yii::app()->request->baseUrl;
+                    $approve = new approve; 
+                    $approve->CID = $company->CID;
+                    $approve->save();
+                
+                    $baseUrl = Yii::app()->request->baseUrl;
                
-                $this->redirect(array('site/index'));
-
+                    $this->redirect(array('company/company'));
+                
                // $record->img_name = 'default';
 
                 // $record->mailingAddress = $model->mailingAddress;
               //  $record->mailingAddress = nl2br($_POST['addressId']);
 
               //  $record->activationKey = $activationKey;
-            
-                
-               
             }
-        }
+        
     
          $this->render('register_company', array('model' => $model));
     }

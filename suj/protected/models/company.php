@@ -16,6 +16,8 @@ public function relations() {
    // other relations
       'job'=> array('job', self::HAS_MANY, 'job', 'CID'),
       'approve'=> array(self::HAS_ONE, 'approve', 'CID'),
+      'user'=> array(self::HAS_ONE, 'user', 'CID'),
+    
     //  'order'=>'job.created ASC',
         
     );
