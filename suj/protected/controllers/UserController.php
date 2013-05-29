@@ -1,13 +1,11 @@
 <?php
 
 class UserController extends Controller
-{   public function filters()
-    {
+{   public function filters()   {
         return array( 'accessControl' ); // perform access control for CRUD operations
     }
  
-    public function accessRules()
-    {
+    public function accessRules()   {
         return array(
            
             array('allow', // allow authenticated users to access all actions
@@ -25,16 +23,12 @@ class UserController extends Controller
              //     'users'=>array('*'),
         );
     }
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
-        // 2 versions of resume are stored
-        public function actionDepositResume()   {
+    // 2 versions of resume are stored
+    public function actionDepositResume()   {
              $model = new ResumeForm();
              $user=user::model()->find(':ID=ID', array('ID'=>Yii::app()->user->getID()));
+            
              if (isset($_POST['ResumeForm'])) {
-                    
                     $uploadedFile=CUploadedFile::getInstance($model,'resume');
                     $oldfilename = $user->resume;
                     $oldfilename2 = $user->resume2;
@@ -54,39 +48,13 @@ class UserController extends Controller
                                 }            
                          }   
                      } 
-                }
-                $this->render('deposit', array('model'=>$model,
-                                                    'user'=>$user));
-        }
+             }
+             $this->render('deposit', array('model'=>$model,
+                                            'user'=>$user));
+    }
         
-        public function actionApplication()
-	{
+    public function actionApplication() {
 		$this->render('application');
-	}
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+    }
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

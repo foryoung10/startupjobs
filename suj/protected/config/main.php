@@ -101,7 +101,7 @@ return array(
        'mail' => array(
         'class' => 'application.extensions.yii-mail.YiiMail',
         'transportType'=>'smtp', /// case sensitive!
-        'transportOptions'=>array(
+       /* 'transportOptions'=>array(
             'host'=>'smtp.gmail.com',
             'username'=>'inspiredwearntu@gmail.com',
             // or email@googleappsdomain.com
@@ -109,6 +109,8 @@ return array(
             'port'=>'465',
             'encryption'=>'ssl',
             ),
+        * */
+        
         'viewPath' => 'application.views.mail',
         'logging' => true,
         'dryRun' => false

@@ -10,6 +10,7 @@ $this->breadcrumbs = array(
 <?php
         $premium=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'limit'=>3,
+                                                                    'with'=>array('company'),     
                                                                     'order'=>new CDbExpression('RAND()'),
                                                                     ),
                                                                     'pagination' => false
@@ -30,7 +31,7 @@ $this->breadcrumbs = array(
 <?php
         $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'order'=>'created DESC',
-                                                                    
+                                                                    'with'=>array('company'), 
                                                                     ),
                                                                     'pagination'=>array(
                                                                                         'pageSize'=>15,

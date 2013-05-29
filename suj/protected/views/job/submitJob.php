@@ -33,12 +33,18 @@ Please fill out the form with your particulars
                                                                  '4000-6000'=> '$4000-$6000',
                                                                  '>6000' => '>$6000'), 
                                                                  array('options' => array('M' => array('selected' => true)))); ?>
-       <?php echo $form->dropDownListRow($model, 'location', array(''         =>'',
-                                                                'Full-time' => 'Full-time',
-                                                                'Part-time' => 'Part-time',
-                                                                'Freelance' => 'Freelance',
-                                                                'Internship'=> 'Internship',
-                                                                'Temporary' => 'Temporary'), 
+       <?php echo $form->dropDownListRow($model, 'location', array('Singapore' => 'Singapore',
+                                                                'China' => 'China',
+                                                                'India' => 'India',
+                                                                'Indonesia' => 'Indonesia',
+                                                                'Japan'=> 'Japan',
+                                                                'Korea, South' => 'Korea, South',
+                                                                'Malaysia' => 'Malaysia',
+                                                                'Myanmar' => 'Myanmar',
+                                                                'Singapore' => 'Singapore',
+                                                                'Taiwan' => 'Taiwan',
+                                                                'Thailand' => 'Thailand',
+                                                                'Vietnam' => 'Vietnam',), 
                                                                  array('options' => array('M' => array('selected' => true)))); ?>
   
        <?php echo $form->textAreaRow($model,'description', array('class'=>'span8', 'rows'=>15)); ?>

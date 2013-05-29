@@ -1,32 +1,28 @@
 <?php
 class JobController extends Controller {
-     public function filters()
-    {
+    public function filters()   {
         return array( 'accessControl' ); // perform access control for CRUD operations
     }
  
-    public function accessRules()
-    {
+    public function accessRules()   {
         return array(
             array('allow', // allow authenticated users to access all actions
                   'roles'=>array('2'),
-           ),
+            ),
             array('allow',
                   'actions'=>array('apply'),
                   'users'=>array('@'),  
-//'roles'=>array('0','1','2'),  
                     
-                ),
+            ),
             array('allow',
                   'actions'=>array('job'),
                   'users'=>array('*'),
-                ),
-           
+            ),
             array('deny',
                   'users'=>array('*')),
-        );
+            );
     }
-   public function actions() {
+    public function actions() {
         return array(
             // captcha action renders the CAPTCHA image displayed on the contact page
             'captcha' => array(
@@ -42,19 +38,19 @@ class JobController extends Controller {
     }
     
     public function actionManageJobs() {
-        $criteria = new CDbCriteria;
-        $criteria->condition='ID=:ID';
-        $criteria->params=array(':ID'=>Yii::app()->user->getID());
-        $jobs=job::model()->with('company')->findAll($criteria);
         
-        $this->render('manageJobs',array('jobs'=>$jobs));
+       $this->render('manageJobs');
     }
-   public function actionSubmitJob() {
+    /*Approve job post only if company is approved ( status = 1)
+     * else redirect to not approved
+     */
+    public function actionSubmitJob() {
        $model = new JobForm;
-       $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
        if (isset($_POST['JobForm'])) {
+                       $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
                        $model->attributes = $_POST['JobForm'];
-                       if ($model->validate()) {
+                       if ($company ->status == 1) {
+                            if ($model->validate()) {
                                       $record = new job;
                                       $record->title = $model->title;
                                       $record->description = $model->description;
@@ -62,19 +58,21 @@ class JobController extends Controller {
                                       $record->salary = $model->salary;
                                       $record->location = $model->location;
                                       $record->CID = $company->CID;
-                                      // increment job count by one
                                       if ($record->save()) {      
                                             $JID=$record->JID;           //redirect  
                                             $this->redirect(array('job/premium','JID' => $JID));
                                        }
-                        }   
-        }
-        
-        $this->render('submitJob', array('model' => $model));
+                            }   
+                       }
+                       else
+                            $this->redirect(array('site/page', 'view'=>'notApproved'));
+       }
+       $this->render('submitJob', array('model' => $model));
     }
+    //Not completed
+    //Upgrade job posting to premium
     
     public function actionPremium($JID) {
-        
        if(true) {
            $job = job::model()->find('JID=:JID',  array(':JID' => $JID, ));
            $job->premium = 1;
@@ -118,7 +116,6 @@ class JobController extends Controller {
     }
     
     public function actionJob($JID) {
-        // $ID=$id;
         $job = job::model()->find('JID=:JID', array('JID' => $JID));
         $CID=$job->CID;
         $company = company::model()->find('CID=:CID', array('CID'=> $CID));
@@ -128,10 +125,9 @@ class JobController extends Controller {
     
     
     public function deleteJob($JID) {
-        $job = job::model()->with('company')->find('JID=:JID' AND 'ID=:ID',  array(':JID' => $JID, ':ID'=>$ID));
+        $job = job::model()->with('company')->find('JID=:JID&&ID=:ID',  array(':JID' => $JID, ':ID'=>Yii::app()->user->getID()));
         $job->delete();
-        //Yii::app()->getRequest()->redirect(Yii::app()->request->baseUrl . '/index.php/item/viewCollection');
-
+       
     } 
   
     public function actionJobList()  {

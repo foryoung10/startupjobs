@@ -4,13 +4,11 @@
 
 class AdminController extends Controller
 {
-     public function filters()
-    {
+     public function filters()  {
         return array( 'accessControl' ); // perform access control for CRUD operations
     }
  
-    public function accessRules()
-    {
+    public function accessRules()   {
         return array(
             array('allow', // allow authenticated users to access all actions
                   'roles'=>array('1'),
@@ -37,7 +35,27 @@ class AdminController extends Controller
                 $approve -> approved = new CDbExpression('NOW()');
                // $approve ->status = 1;
                 if ($approve->save())
-                    $this->redirect(array('admin/manage'));
+                      $message = new YiiMailMessage;
+                      $serverPath = 'localhost/yii/uStyle';
+                      $body = "Hi <font type=\"bold\">" . $company->cname . "</font><br>
+                              <br>
+                              Welcome to StartUp Jobs Asia! Your coporate account <font type=\"bold\">" . $company->cname . "</font> has been approved.<br>
+                              <br>
+                              You may start posting jobs
+                              <br>
+                              If you have NOT attempted to create an account at uStyle please ignore this email - it might have been sent because someone mistyped his/her own email address.<br>
+                              THIS IS AN AUTO-GENERATED MESSAGE - PLEASE DO NOT REPLY TO THIS MESSAGE!<br>
+                              <br>
+                              -------------<br>
+                              StartUp Jobs Asia Team";
+                      $message->setBody($body, 'text/html');
+                      $message->subject = "StartUp Jobs Asia Coporate Accounts";
+
+                     $message->addTo($company->email);
+                     $message->from = 'admin@StartUpJobsAsia.com';
+                     Yii::app()->mail->send($message);
+                     $this->redirect(array('admin/manage'));
+              
     }
 
     public function actionModify($id) {

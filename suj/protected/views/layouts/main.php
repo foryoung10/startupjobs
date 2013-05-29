@@ -2,13 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="en" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
 </body>
 <div class="container" id="page">
@@ -31,15 +29,13 @@
                                                         array('label'=>'Submit a job', 'url'=>array('/job/submitJob'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Deposit', 'url'=>array('/user/depositResume'),'visible'=>Yii::app()->user->isMember()),
                                                         array('label'=>'Company', 'url'=>array('/company/company'),'visible'=>Yii::app()->user->isCompany()),
-                                                        array('label'=>'Edit', 'url'=>array('/company/update'),'visible'=>Yii::app()->user->isCompany()),
+                                                        array('label'=>'Update Profile', 'url'=>array('/company/update'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Manage', 'url'=>array('/admin/manage'),'visible'=>Yii::app()->user->isAdmin()),
                                                         array('label'=>'Manage Jobs', 'url'=>array('/job/manageJobs'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Applications', 'url'=>array('/company/application'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Applications', 'url'=>array('/user/application'),'visible'=>Yii::app()->user->isMember()),
-                                                   //   
                                                         //   array('label'=>'Upgrade', 'url'=>array('/company/upgrade'),'visible'=>Yii::app()->user->isCompany()),
-                                                        
-                                            ),
+                                                      ),
                                     ),
                             '<form class="navbar-search pull-left" action="<?php echo Yii::app()->request->baseUrl; ?>/index.php/search/search" method = "post"><input type="text" class="search-query span2" placeholder="Search"></form>',
                             array(
@@ -63,8 +59,7 @@
         <div class="span4">
             <?php $image='<img src='.Yii::app()->request->baseUrl.'/images/suj.png>'?>
             <?php echo CHtml::link($image, array('site/index')); ?>
-     
-	</div><!-- header -->
+        </div><!-- header -->
 
         <div class="span6 offset2 ">
                     <?php $this->widget('bootstrap.widgets.TbMenu', array(
@@ -77,40 +72,35 @@
                                                         array('label'=>'Internship', 'url'=>array('/site/internship')),
                                                         array('label'=>'Temporary', 'url'=>array('/site/temporary')),
                                                         array('label'=>'Freelance', 'url'=>array('/site/freelance')),
-                                        
                                         ),
                     )); ?>
-            </div>
+         </div>
     </div>
- 	
-	<?php if(isset($this->breadcrumbs)):?>
-	
-                <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-                        'links'=>$this->breadcrumbs,
+</div>            
+ <?php if(isset($this->breadcrumbs)):?>
+               <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                                'links'=>$this->breadcrumbs,
                 )); ?>
-                <?php endif?>
+<?php endif?>
 
-	<?php echo $content; ?>
+<?php echo $content; ?>
 
-	<div class="clear"></div>
+<div class="clear"></div>
 
-	<div id="footer">
+    <div id="footer">
 	<ul class="nav nav-pills">    
-		<li>ABOUT US</li>
+	<li>ABOUT US</li>
         <li>TESTIMONIAL</li>
         <li>BLOG</li>
         <li>ADVISORS</li>
         <li>EVENTS</li>
         <li>PRESS RELEASE</li>
         <li>CONNECT</li>
-    </ul>
-
-
-		<div>Copyright &copy; <?php echo date('Y'); ?> by  Startup Jobs Asia. All Rights Reserved.</div>
+        </ul>
+	<div>Copyright &copy; <?php echo date('Y'); ?> by  Startup Jobs Asia. All Rights Reserved.</div>
 
 	</div><!-- footer -->
 
-</div><!-- page -->
 
 
 </html>

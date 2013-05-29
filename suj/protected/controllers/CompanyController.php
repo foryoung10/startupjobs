@@ -1,18 +1,16 @@
 <?php
 
-class CompanyController extends Controller
-{    public function filters()
-    {
-        return array( 'accessControl' ); // perform access control for CRUD operations
+class CompanyController extends Controller  {   
+    public function filters(){
+        return array( 'accessControl' ); 
     }
  
-    public function accessRules()
-    {
+    public function accessRules() {
         return array(
-             array('allow', // allow authenticated users to access all actions
+             array('allow', // allow only company accounts to access all actions
                   'roles'=>array('2'),
            ),
-            array('allow',
+            array('allow',  // allow all users to view company account
                   'actions'=>array('view'),
                   'users'=>array('*'),
                 ),
@@ -20,38 +18,24 @@ class CompanyController extends Controller
                 'users'=>array('*')),
         );
     }
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
-
-        
-        public function editCompany(){
-                $record = new $company;
-            
-            
-                $this->render('edit');
-        }
-        
-     
-        
+ 
+  
            
-       public function actionCompany() {
+    public function actionCompany() {
         $ID = Yii::app()->user->getID();
         $company = company::model()->find('ID=:ID', array('ID' => $ID));
         $this->actionView($company->CID);
-       }
+    }
 
-       public function actionView($CID) {
-      
+    public function actionView($CID) {
         $company = company::model()->find('CID=:CID', array('CID' => $CID));
         $job=job::model()->findAll('CID=:CID',array('CID'=>$CID,));
 
         $this->render('view', array('company' => $company,
                                      'job'=>$job));
-        }
+    }
     
-      public function actionUpdate() {
+    public function actionUpdate() {
         $ID = Yii::app()->user->getID();
         $CForm = new CompanyForm;
         $company = company::model()->find('ID=:ID', array('ID' => $ID));
@@ -85,45 +69,19 @@ class CompanyController extends Controller
                     
                     }             
        
-            $this->render('update', array('CForm' => $CForm, 'company' => $company, ));
-        }
-        
-        public function actionUpgrade() {
+           $this->render('update', array('CForm' => $CForm, 'company' => $company, ));
+    }
+    //upgrade company account TBD    
+    public function actionUpgrade() {
             
             
             $this->render('upgrade');
-        }
-        
-        public function actionApplication()    {
-            
-            $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
-            $this->render('application' ,array('company'=>$company));
-        }
-        
- /*   public function actionCreate()
-    {
-        $model=new Banner;  // this is my model related to table
-        if(isset($_POST['Banner']))
-        {
-            
-            $model->attributes=$_POST['Banner'];
- 
-            $uploadedFile=CUploadedFile::getInstance($CForm,'image');
-            $fileName = Yii::app()->user->get_Id();  // random number + file name
-            $CForm->image = $fileName;
- 
-            if($model->save())
-            {
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../Company_logo/'.$fileName);  // image will uplode to rootDirectory/banner/
-                $this->redirect(array('site/home'));
-            }
-        }
-        $this->render('create',array(
-            'model'=>$model,
-        ));
     }
-*/
-   }
+       
+   
+        
+
+}
    
   
  
