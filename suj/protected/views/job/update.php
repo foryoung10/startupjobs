@@ -1,7 +1,7 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Submit a Job';
+$this->pageTitle = Yii::app()->name . ' - Update Job';
 $this->breadcrumbs = array(
-    'Submit a Job',);
+    'Update Job',);
 ?>
 
 <p>

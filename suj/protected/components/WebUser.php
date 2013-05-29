@@ -8,7 +8,20 @@ class WebUser extends CWebUser {
   // Store model to not repeat query.
   private $_model;
   
- 
+  public function checkAccess($operation, $params=array())
+    {
+        if (empty($this->id)) {
+            // Not identified => no rights
+            return false;
+        }
+        $role = $this->getState("roles");
+        if ($role === '1') {
+            return true; // admin role has access to everything
+        }
+      
+        // allow access if the operation request is the current user's role
+        return ($operation === $role);
+    }
   // Return first name.
   // access it by Yii::app()->user->first_name
   function getFirst_Name(){

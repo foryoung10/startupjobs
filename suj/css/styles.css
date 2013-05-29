@@ -41,3 +41,80 @@ div.form .errorSummary ul
 	margin: 0;
 	padding: 0 0 0 20px;
 }
+.Premium
+{
+	background: url('http://www.startupjobs.asia/wp-content/uploads/premium_box.png') no-repeat scroll 0 0 transparent;
+	height:414px;
+	width:273px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	padding:10px 30px 50px;
+	float:left;
+	margin-right:40px;
+}
+.PremiumType{padding:10px 0px 0px 0px;}
+.PremiumLogo{padding:100px 0px 0px 0px;}
+.PremiumTitle{padding:10px 0px 0px 0px;}
+.PremiumDescription{padding:10px 0px 0px 0px;}
+.pagination{clear:both;}
+
+#JobType{float:right;margin-right: 30px;}
+.type div{
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	height: 41px;
+    padding: 22px 0 0 6px;
+    width: 63px;
+	}
+.type div.Full-time {
+	color: #fff;
+	background:#FA7D31 !important;
+}
+.type div.Part-time {
+	color: #fff;
+	background:#ab32db !important;
+}
+.type div.Freelance {
+	color: #fff;
+	background:#6464f4 !important;
+}
+.type div.Temporary {
+	color: #fff;
+	background:#d51386 !important;
+}
+.type div.Internship {
+	color: #fff;
+	background:#998c9e !important;
+}
+
+.Border div.Full-time {
+	background:#FA7D31 !important;
+	border:2px solid #FA7D31;
+    height: 2px;
+    margin-top: 8px;		
+}
+.Border div.Part-time {
+	background:#ab32db !important;
+	border:2px solid #ab32db;
+    height: 2px;
+    margin-top: 8px;
+}
+.Border div.Freelance {
+	background:#6464f4 !important;
+	border:2px solid #6464f4;
+    height: 2px;
+    margin-top: 8px;
+}
+.Border div.Temporary {
+	background:#d51386 !important;
+	border:2px solid #d51386;
+    height: 2px;
+    margin-top: 8px;	
+}
+.Border div.Internship {
+	background:#998c9e !important;
+	border:2px solid #998c9e;
+    height: 2px;
+    margin-top: 8px;
+}

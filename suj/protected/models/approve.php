@@ -15,7 +15,7 @@ class approve extends CActiveRecord {
  public function relations() {
   return array(
    // other relations
-     'company'=> array(self::HAS_ONE, 'company', 'CID'),
+     'company'=> array(self::BELONGS_TO, 'company', 'CID'),
         
     );
   }

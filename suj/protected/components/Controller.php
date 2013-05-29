@@ -5,33 +5,8 @@
  */
 class Controller extends CController
 {
-	/*
-         public function accessRules()
-	{
-		return array(
-		array('allow',
-			'controllers'=>array('admin'),
-			'users'=>array('1'),
-		),
-		array('allow',
-	                'controllers'=>array('site', 'search'),
-	                'users'=>array('?'),
-		),
-		array('deny',
-	                'controllers'=>array('profile','item', 'cart', 'admin'),
-	                'users'=>array('?'),
-		),
-		array('allow',
-			        'controllers'=>array('profile','item', 'cart', 'search', 'site'),
-			        'users'=>array('@'),
-		),
-		
-		array('deny',
-	                'actions'=>array('profile', 'item', 'cart', 'search', 'site'),
-	                'users'=>array('*'),
-		),
-		);
-	}   
+	
+       
          /**
 	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.

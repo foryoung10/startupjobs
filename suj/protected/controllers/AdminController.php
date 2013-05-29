@@ -4,10 +4,26 @@
 
 class AdminController extends Controller
 {
-     public function actionManage() {
-          $data = approve::model()->with('company')->findAll();
+     public function filters()
+    {
+        return array( 'accessControl' ); // perform access control for CRUD operations
+    }
+ 
+    public function accessRules()
+    {
+        return array(
+            array('allow', // allow authenticated users to access all actions
+                  'roles'=>array('1'),
+            ),
+            array('deny'),
+                'users'=>array('*'),
+        );
+    }
+    
+    
+    public function actionManage() {
           
-          $this->render('approve',$data);
+          $this->render('approve');
           
     }
 
@@ -19,8 +35,9 @@ class AdminController extends Controller
                 $company->save();
                 $approve = approve::model()->find('CID=:CID',array(':CID'=>$CID));
                 $approve -> approved = new CDbExpression('NOW()');
-                $approve ->status = 1;
-                $approve->save();
+               // $approve ->status = 1;
+                if ($approve->save())
+                    $this->redirect(array('admin/manage'));
     }
 
     public function actionModify($id) {

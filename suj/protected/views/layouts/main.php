@@ -22,18 +22,22 @@
                                      array(
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'items'=>array(
-                                                        array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                                                        array('label'=>'Contact', 'url'=>array('/site/contact')),
+                                                        // array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+                                                        //array('label'=>'Contact', 'url'=>array('/site/contact')),
                                                         //array('label'=>'Register', 'url'=>array('/registration/registration')),
                                                         //array('label'=>'Jobs', 'url'=>array('/job/all')),
                                                         array('label'=>'Registration', 'url'=>array('/registration/registration'),'visible'=>Yii::app()->user->isGuest),
                                                         array('label'=>'Register Company', 'url'=>array('/registration/registerCompany'),'visible'=>Yii::app()->user->isMember()),
                                                         array('label'=>'Submit a job', 'url'=>array('/job/submitJob'),'visible'=>Yii::app()->user->isCompany()),
+                                                        array('label'=>'Deposit', 'url'=>array('/user/depositResume'),'visible'=>Yii::app()->user->isMember()),
                                                         array('label'=>'Company', 'url'=>array('/company/company'),'visible'=>Yii::app()->user->isCompany()),
-                                                        array('label'=>'Edit', 'url'=>array('/company/update'),'visible'=>Yii::app()->user->isAdmin()),
+                                                        array('label'=>'Edit', 'url'=>array('/company/update'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Manage', 'url'=>array('/admin/manage'),'visible'=>Yii::app()->user->isAdmin()),
                                                         array('label'=>'Manage Jobs', 'url'=>array('/job/manageJobs'),'visible'=>Yii::app()->user->isCompany()),
-                                                        array('label'=>'Upgrade', 'url'=>array('/company/upgrade'),'visible'=>Yii::app()->user->isCompany()),
+                                                        array('label'=>'Applications', 'url'=>array('/company/application'),'visible'=>Yii::app()->user->isCompany()),
+                                                        array('label'=>'Applications', 'url'=>array('/user/application'),'visible'=>Yii::app()->user->isMember()),
+                                                   //   
+                                                        //   array('label'=>'Upgrade', 'url'=>array('/company/upgrade'),'visible'=>Yii::app()->user->isCompany()),
                                                         
                                             ),
                                     ),
@@ -67,12 +71,12 @@
                                         'type'=>'tabs', // '', 'tabs', 'pills' (or 'list')
                                         'stacked'=>false, // whether this is a stacked menu
                                         'items'=>array(
-                                                        array('label'=>'Latest', 'url'=>array('/job/latest')),
-                                                        array('label'=>'Full-Time', 'url'=>array('/job/fullTime')),
-                                                        array('label'=>'Part-Time', 'url'=>array('/job/partTime')),
-                                                        array('label'=>'Internship', 'url'=>array('/job/internship')),
-                                                        array('label'=>'Temporary', 'url'=>array('/job/temporary')),
-                                                        array('label'=>'Freelance', 'url'=>array('/job/freelance')),
+                                                        array('label'=>'Latest', 'url'=>array('/site/latest')),
+                                                        array('label'=>'Full-Time', 'url'=>array('/site/fullTime')),
+                                                        array('label'=>'Part-Time', 'url'=>array('/site/partTime')),
+                                                        array('label'=>'Internship', 'url'=>array('/site/internship')),
+                                                        array('label'=>'Temporary', 'url'=>array('/site/temporary')),
+                                                        array('label'=>'Freelance', 'url'=>array('/site/freelance')),
                                         
                                         ),
                     )); ?>

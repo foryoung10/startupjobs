@@ -6,7 +6,6 @@ class CompanyForm extends CFormModel
     public $cname;
     public $about;
     public $cemail;
-    public $verifyCode;
     public $password2;
     public $image;
     public $address;
@@ -28,15 +27,17 @@ class CompanyForm extends CFormModel
             // username must be at lenght minimal of 6 characters
             array('cname', 'length', 'max'=>45),
            // password must be at lenght minimal of 6 charaycters
-            array('address,contact, about','safe'),
+            array('address,contact, image, about','safe'),
             array('contact', 'length', 'min' => 8, 'max' => 8),
             array('contact', 'numerical'),
             
             // verifyCode needs to be entered correctly
-            array('image', 'file','types'=>'jpg, gif, png', 'allowEmpty'=>true, 'on'=>'update'),
-            array('title, image', 'length', 'max'=>255, 'on'=>'insert,update'),
+            array('image', 'file','on'=>'insert','types'=>'jpg, gif, png',  ),
+            array('image', 'file','on'=>'update','types'=>'jpg, gif, png', 'allowEmpty'=>true, ),
+           
+// array('title', 'length', 'max'=>255, 'on'=>'insert,update'),
      //       array('email, username','unique','className'=>'member'),
-            array('verifyCode', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
+            //array('verifyCode', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
            );
     }
     

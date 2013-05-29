@@ -14,7 +14,7 @@ $this->breadcrumbs = array(
                <?php echo CHtml::link($image, array('company/view', 'CID'=>$company->CID)); ?>
               <h3><?php echo CHtml::encode($company->cname) ?></h3> 
                <h3> About </h3>
-               <?php echo CHtml::encode($job->description) ?>
+               <?php echo nl2br($job->description) ?>
                <h4> How to apply </h4>
      </div>
      <div class="span3 offset1">
@@ -24,3 +24,9 @@ $this->breadcrumbs = array(
                <?php echo CHtml::encode($job->salary) ?>
      </div>
 </div>
+      <?php $this->widget('bootstrap.widgets.TbButton', array(
+                                        'label'=>'Apply Online',
+                                        'type'=>'primary', 
+                                        'size'=>'large', 
+                                        'url'=>Yii::app()->createUrl("job/apply", array("JID"=>$job->JID )),    
+)); ?>  

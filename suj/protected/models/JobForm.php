@@ -9,6 +9,8 @@ class JobForm extends CFormModel
         public $salary;
         public $created;
         public $modified;
+        public $location;
+        public $tags;
 	/**
 	 * Declares the validation rules.
 	 */

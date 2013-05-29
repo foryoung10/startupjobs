@@ -108,7 +108,7 @@ class SiteController extends Controller
         $this->render('login', array('model' => $model));
     }
 
-
+      
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
@@ -117,4 +117,105 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+          public function actionLatest() {
+        $criteria = new CDbCriteria;
+        $pageSize = 8;
+        $total = job::model()->count();
+        $pages = new CPagination($total);
+        $pages->pageSize = 5;
+        
+        $count = job::model()->count($criteria);
+        $pages->applyLimit($criteria);
+        
+        $jobs=job::model()->with('company')->findAll($criteria);
+        
+        $this->render('latest', array('jobs' => $jobs,
+                                       'pages' => $pages,
+                                       'count' => $count,
+                                       'pageSize' => $pageSize));
+      }
+         
+      public function actionFullTime() {
+        $this->render('fullTime');
+         //  $this->render('fullTime', array('posts' => $post));
+           
+       }
+       //$item = product::model()->find('productID=:productID', array('productID' => $productID));
+        
+      public function actionPartTime() {
+         $PAGE_SIZE = 10; 
+         $model=new job();
+         $criteria=new CDbCriteria;
+         //  $criteria->order = 'created DESC';
+         $type = "Part-Time";
+         $criteria->condition='type=:type';
+         $criteria->params=array(':type'=>$type);
+         $total = $model->count($criteria);
+         $pages=new CPagination($total);
+         $pages->pageSize=10;
+         $pages->applyLimit($criteria);
+         $list = $model->findAll($criteria);
+         //$criteria=new CDbCriteria;
+         //$posts=job::model()->with('company')->findAll($criteria);
+         $this->render('partTime',array('list'=>$list,
+                                           'pages'=>$pages,));
+       }
+      public function actionTemporary() {
+         $PAGE_SIZE = 10; 
+         $model=new job();
+         $criteria=new CDbCriteria;
+         //  $criteria->order = 'created DESC';
+         $type = "Temporary";
+         $criteria->condition='type=:type';
+         $criteria->params=array(':type'=>$type);
+         $total = $model->count($criteria);
+         $pages=new CPagination($total);
+         $pages->pageSize=10;
+         $pages->applyLimit($criteria);
+         $list = $model->findAll($criteria);
+         //$criteria=new CDbCriteria;
+         //$posts=job::model()->with('company')->findAll($criteria);
+         $this->render('temporary',array('list'=>$list,
+                                           'pages'=>$pages,));
+       }  
+      public function actionInternship() {
+         $PAGE_SIZE = 10; 
+         $model=new job();
+         $criteria=new CDbCriteria;
+         //  $criteria->order = 'created DESC';
+         $type = "Internship";
+         $criteria->condition='type=:type';
+         $criteria->params=array(':type'=>$type);
+         $total = $model->count($criteria);
+         $pages=new CPagination($total);
+         $pages->pageSize=10;
+         $pages->applyLimit($criteria);
+         $list = $model->findAll($criteria);
+         //$criteria=new CDbCriteria;
+         //$posts=job::model()->with('company')->findAll($criteria);
+         $this->render('partTime',array('list'=>$list,
+                                        'pages'=>$pages,));
+       }
+     public function actionFreeLance() {
+        $PAGE_SIZE = 10; 
+        $model=new job();
+        $criteria=new CDbCriteria;
+        //  $criteria->order = 'created DESC';
+        $type = "Freelance";
+        $criteria->condition='type=:type';
+        $criteria->params=array(':type'=>$type);
+        $total = $model->count($criteria);
+        $pages=new CPagination($total);
+        $pages->pageSize=10;
+        $pages->applyLimit($criteria);
+        $list = $model->findAll($criteria);
+        //$criteria=new CDbCriteria;
+        //$posts=job::model()->with('company')->findAll($criteria);
+        $this->render('freelance',array('list'=>$list,
+                                        'pages'=>$pages,));
+       }
+       
+        
+        
+        
 }

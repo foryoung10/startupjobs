@@ -1,6 +1,31 @@
 <?php
 class JobController extends Controller {
-
+     public function filters()
+    {
+        return array( 'accessControl' ); // perform access control for CRUD operations
+    }
+ 
+    public function accessRules()
+    {
+        return array(
+            array('allow', // allow authenticated users to access all actions
+                  'roles'=>array('2'),
+           ),
+            array('allow',
+                  'actions'=>array('apply'),
+                  'users'=>array('@'),  
+//'roles'=>array('0','1','2'),  
+                    
+                ),
+            array('allow',
+                  'actions'=>array('job'),
+                  'users'=>array('*'),
+                ),
+           
+            array('deny',
+                  'users'=>array('*')),
+        );
+    }
    public function actions() {
         return array(
             // captcha action renders the CAPTCHA image displayed on the contact page
@@ -35,11 +60,12 @@ class JobController extends Controller {
                                       $record->description = $model->description;
                                       $record->type = $model->type;
                                       $record->salary = $model->salary;
+                                      $record->location = $model->location;
                                       $record->CID = $company->CID;
                                       // increment job count by one
                                       if ($record->save()) {      
                                             $JID=$record->JID;           //redirect  
-                                            $this->redirect(array('job/job','JID' => $JID));
+                                            $this->redirect(array('job/premium','JID' => $JID));
                                        }
                         }   
         }
@@ -47,13 +73,33 @@ class JobController extends Controller {
         $this->render('submitJob', array('model' => $model));
     }
     
+    public function actionPremium($JID) {
+        
+       if(true) {
+           $job = job::model()->find('JID=:JID',  array(':JID' => $JID, ));
+           $job->premium = 1;
+           $job->save();
+       } 
+       
+        $this->render('premium');
+    }
+    
+    
     public function actionUpdate($JID) {
         $ID = Yii::app()->user->getID();
         $model = new JobForm;
-        $job = job::model()->with('company')->find('JID=:JID' AND 'ID=:ID',  array(':JID' => $JID, ':ID'=>$ID));
+        //$job = job::model()->with('company')->find('JID=:JID' ,  array(':JID' => $JID, ));
+       
+       //  if (!($favourite = favourite::model()->find('profileID=:profileID&&friendID=:friendID', array(':profileID' => $model1->profileID,
+         //   ':friendID' => $model1->friendID))))
+       
+        //need to check company id as well...
+        //potential error
+        $job = job::model()->with('company')->find('JID=:JID&&ID=:ID',  array(':JID' => $JID, ':ID'=>$ID));
         //CActiveRecord for old one
-        $model->attributes = $job->attributes;
-  //    $CForm->about = str_replace('<br />', "", $company->about);
+        if ($job !=null)
+            $model->attributes = $job->attributes;
+        //$model->about = str_replace('<br />', "", $company->about);
         if (isset($_POST['JobForm'])) {
                     $model->attributes = $_POST['JobForm'];
                     $job->title = $model->title;
@@ -68,7 +114,7 @@ class JobController extends Controller {
                     
         }             
         $this->render('update', array('model' => $model, 
-                                          'job' => $job, ));
+                                      'job' => $job, ));
     }
     
     public function actionJob($JID) {
@@ -87,125 +133,40 @@ class JobController extends Controller {
         //Yii::app()->getRequest()->redirect(Yii::app()->request->baseUrl . '/index.php/item/viewCollection');
 
     } 
-    public function actionLatest() {
-        $criteria = new CDbCriteria;
-        $pageSize = 8;
-        $total = job::model()->count();
-        $pages = new CPagination($total);
-        $pages->pageSize = 5;
-        
-        $count = job::model()->count($criteria);
-        $pages->applyLimit($criteria);
-        
-        $jobs=job::model()->with('company')->findAll($criteria);
-        
-        $this->render('latest', array('jobs' => $jobs,
-                                       'pages' => $pages,
-                                       'count' => $count,
-                                       'pageSize' => $pageSize));
-      }
-         
-      public function actionFullTime() {
-        $PAGE_SIZE = 10; 
-        $model=new job();
-        $criteria=new CDbCriteria;
-        //$criteria->order = 'created DESC';
-        $type = "Full-Time";
-        $criteria->condition='type=:type';
-        $criteria->params=array(':type'=>$type);
-        $total = $model->count($criteria);
-        $pages=new CPagination($total);
-        $pages->pageSize=10;
-        $pages->applyLimit($criteria);
-        $list = $model->findAll($criteria);
-        //$criteria=new CDbCriteria;
-        //$posts=job::model()->with('company')->findAll($criteria);
-        $this->render('fullTime',array('list'=>$list,
-                                           'pages'=>$pages,));
-         //  $this->render('fullTime', array('posts' => $post));
-           
-       }
-       //$item = product::model()->find('productID=:productID', array('productID' => $productID));
-        
-      public function actionPartTime() {
-         $PAGE_SIZE = 10; 
-         $model=new job();
-         $criteria=new CDbCriteria;
-         //  $criteria->order = 'created DESC';
-         $type = "Part-Time";
-         $criteria->condition='type=:type';
-         $criteria->params=array(':type'=>$type);
-         $total = $model->count($criteria);
-         $pages=new CPagination($total);
-         $pages->pageSize=10;
-         $pages->applyLimit($criteria);
-         $list = $model->findAll($criteria);
-         //$criteria=new CDbCriteria;
-         //$posts=job::model()->with('company')->findAll($criteria);
-         $this->render('partTime',array('list'=>$list,
-                                           'pages'=>$pages,));
-       }
-      public function actionTemporary() {
-         $PAGE_SIZE = 10; 
-         $model=new job();
-         $criteria=new CDbCriteria;
-         //  $criteria->order = 'created DESC';
-         $type = "Temporary";
-         $criteria->condition='type=:type';
-         $criteria->params=array(':type'=>$type);
-         $total = $model->count($criteria);
-         $pages=new CPagination($total);
-         $pages->pageSize=10;
-         $pages->applyLimit($criteria);
-         $list = $model->findAll($criteria);
-         //$criteria=new CDbCriteria;
-         //$posts=job::model()->with('company')->findAll($criteria);
-         $this->render('temporary',array('list'=>$list,
-                                           'pages'=>$pages,));
-       }  
-      public function actionInternship() {
-         $PAGE_SIZE = 10; 
-         $model=new job();
-         $criteria=new CDbCriteria;
-         //  $criteria->order = 'created DESC';
-         $type = "Internship";
-         $criteria->condition='type=:type';
-         $criteria->params=array(':type'=>$type);
-         $total = $model->count($criteria);
-         $pages=new CPagination($total);
-         $pages->pageSize=10;
-         $pages->applyLimit($criteria);
-         $list = $model->findAll($criteria);
-         //$criteria=new CDbCriteria;
-         //$posts=job::model()->with('company')->findAll($criteria);
-         $this->render('partTime',array('list'=>$list,
-                                        'pages'=>$pages,));
-       }
-     public function actionFreeLance() {
-        $PAGE_SIZE = 10; 
-        $model=new job();
-        $criteria=new CDbCriteria;
-        //  $criteria->order = 'created DESC';
-        $type = "Freelance";
-        $criteria->condition='type=:type';
-        $criteria->params=array(':type'=>$type);
-        $total = $model->count($criteria);
-        $pages=new CPagination($total);
-        $pages->pageSize=10;
-        $pages->applyLimit($criteria);
-        $list = $model->findAll($criteria);
-        //$criteria=new CDbCriteria;
-        //$posts=job::model()->with('company')->findAll($criteria);
-        $this->render('freelance',array('list'=>$list,
-                                        'pages'=>$pages,));
-       }
-       
+  
     public function actionJobList()  {
         $CID = Yii::app()->user->getID();
         //$jobList=job::model()->findAll('CID=:CID',array('CID'=>$CID,
         $jobList = new Job();                                         
         $this-> render('jobList', array('jobList' =>$jobList));
     }
+
+    public function actionApply($JID) {
+        $ID = Yii::app()->user->getID();
+        // user not logged in
+        
+        //already applied
+        $check = application::model()->find(':ID=ID&&:JID=JID',array(':ID'=>$ID,':JID'=>$JID));
+        if ($check!=null)   {
+            $this->redirect(array('site/page', 'view'=>'error'));
+        }
+        else    {    
+            $application = new application;
+            $job = job::model()->find('JID=:JID', array('JID' => $JID));
+            $application->ID =$ID;
+            $application->JID = $JID;
+            $application->CID = $job ->CID; 
+        // send resume to employer 
+        //$user = user::model()->find(':ID=ID', array(':ID'=>$ID)); 
+            if ($application->save()) {      
+                         // array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+                                                            
+                            $this->redirect(array('site/page', 'view'=>'success'));
+            }
+        }
+        
+    }
+    
 }
     
 

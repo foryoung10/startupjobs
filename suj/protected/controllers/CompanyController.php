@@ -1,7 +1,25 @@
 <?php
 
 class CompanyController extends Controller
-{
+{    public function filters()
+    {
+        return array( 'accessControl' ); // perform access control for CRUD operations
+    }
+ 
+    public function accessRules()
+    {
+        return array(
+             array('allow', // allow authenticated users to access all actions
+                  'roles'=>array('2'),
+           ),
+            array('allow',
+                  'actions'=>array('view'),
+                  'users'=>array('*'),
+                ),
+            array('deny',
+                'users'=>array('*')),
+        );
+    }
 	public function actionIndex()
 	{
 		$this->render('index');
@@ -39,26 +57,31 @@ class CompanyController extends Controller
         $company = company::model()->find('ID=:ID', array('ID' => $ID));
         //CActiveRecord for old one
         $CForm->attributes = $company->attributes;
-  //      $CForm->about = str_replace('<br />', "", $company->about);
+        $CForm->address = str_replace('<br />', "", $company->address);
+        $CForm->about = str_replace('<br />', "", $company->about);
         if (isset($_POST['CompanyForm'])) {
                     $CForm->attributes = $_POST['CompanyForm'];
                     $company->cname = $CForm->cname;
                     $company->about = nl2br($CForm->about);
                     $company->address = nl2br($_POST['addressId']);
                     $company->contact=$CForm->contact;
-                     $uploadedFile=CUploadedFile::getInstance($CForm,'image');
-                     if (!empty($uploadedFile)) {      
-                     
-                                    $fileName = "{$CID}-{$uploadedFile}";  // random number + file name
+                    $uploadedFile=CUploadedFile::getInstance($CForm,'image');
+                    $oldfilename = $company->image;  
+                    if (!empty($uploadedFile)) {      
+                                    $fileName = str_replace(' ', '',"{$company->CID}-{$uploadedFile}");  // random number + file name
                                     $company->image = $fileName;
                          }          
                      if ($company->save())   {
                          if (!empty($uploadedFile)) {      
-                                $uploadedFile->saveAs(Yii::app()->basepath.'/../images/company/'.$fileName);  // image will uplode to rootDirectory/banner    
+                                $uploadedFile->saveAs(Yii::app()->basepath.'/../images/company/'.$fileName);
+                                if ($oldfilename != $fileName) {
+                                        unlink(Yii::app()->basePath . '/../images/company/' . $oldfilename);// image will uplode to rootDirectory/banner    
+                                }        
+                                        
                          }   
                      }    
                          
-          $this->redirect(array('company/myProfile'));
+          $this->redirect(array('company/Company'));
                     
                     }             
        
@@ -69,6 +92,12 @@ class CompanyController extends Controller
             
             
             $this->render('upgrade');
+        }
+        
+        public function actionApplication()    {
+            
+            $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
+            $this->render('application' ,array('company'=>$company));
         }
         
  /*   public function actionCreate()

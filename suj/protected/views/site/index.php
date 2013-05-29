@@ -16,10 +16,10 @@ $this->pageTitle=Yii::app()->name;
 )); ?>
 
     <div class="row-fluid">
-      <div class="span8">
+
       
       <h1>Premium Jobs</h1>
-       <div class="span8">
+       <div class="clear">
 <?php
         $premium=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'limit'=>3,
@@ -31,7 +31,7 @@ $this->pageTitle=Yii::app()->name;
  <?php       $this->widget('bootstrap.widgets.TbListView', array(
             'dataProvider'=>$premium,
             'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
-            'itemView'=>'_jobView',   // refers to the partial view named '_post'
+            'itemView'=>'_jobViewPremium',   // refers to the partial view named '_post'
             'itemsTagName'=>'table',
             'itemsCssClass'=>'table',
             'summaryText'=>'',
@@ -40,10 +40,10 @@ $this->pageTitle=Yii::app()->name;
             
 ));
  ?>
+
  </div>
- <div class="clear"></div>
  <h1>Latest Jobs</h1>
- <div class="span8">
+ <div class="clear">
 <?php
         $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'order'=>'created DESC',
@@ -69,6 +69,6 @@ $this->pageTitle=Yii::app()->name;
 ));
  ?>
 </div>
-    </div>
+
 
 </div>
