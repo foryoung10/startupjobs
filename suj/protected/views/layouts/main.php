@@ -15,6 +15,7 @@
         <?php Yii::app()->bootstrap->register(); ?>
         <?php $this->widget('bootstrap.widgets.TbNavbar', array(
                             'type'=>'', // null or 'inverse'
+                            'brand'=>'<img src='.Yii::app()->request->baseUrl.'/images/suj.png style= "width: 120px">',
                             'collapse'=>true, // requires bootstrap-responsive.css
                             'items'=>array(
                                      array(
@@ -55,28 +56,7 @@
                             ),
                     ),
             )); ?>
-    <div class="row-fluid">
-        <div class="span4">
-            <?php $image='<img src='.Yii::app()->request->baseUrl.'/images/suj.png>'?>
-            <?php echo CHtml::link($image, array('site/index')); ?>
-        </div><!-- header -->
-
-        <div class="span6 offset2 ">
-                    <?php $this->widget('bootstrap.widgets.TbMenu', array(
-                                        'type'=>'tabs', // '', 'tabs', 'pills' (or 'list')
-                                        'stacked'=>false, // whether this is a stacked menu
-                                        'items'=>array(
-                                                        array('label'=>'Latest', 'url'=>array('/site/latest')),
-                                                        array('label'=>'Full-Time', 'url'=>array('/site/fullTime')),
-                                                        array('label'=>'Part-Time', 'url'=>array('/site/partTime')),
-                                                        array('label'=>'Internship', 'url'=>array('/site/internship')),
-                                                        array('label'=>'Temporary', 'url'=>array('/site/temporary')),
-                                                        array('label'=>'Freelance', 'url'=>array('/site/freelance')),
-                                        ),
-                    )); ?>
-         </div>
-    </div>
-</div>            
+  
  <?php if(isset($this->breadcrumbs)):?>
                <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
                                 'links'=>$this->breadcrumbs,
@@ -100,7 +80,4 @@
 	<div>Copyright &copy; <?php echo date('Y'); ?> by  Startup Jobs Asia. All Rights Reserved.</div>
 
 	</div><!-- footer -->
-
-
-
 </html>

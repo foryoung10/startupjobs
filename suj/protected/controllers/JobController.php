@@ -57,6 +57,7 @@ class JobController extends Controller {
                                       $record->type = $model->type;
                                       $record->salary = $model->salary;
                                       $record->location = $model->location;
+                                      $record->category = $model->category;
                                       $record->CID = $company->CID;
                                       if ($record->save()) {      
                                             $JID=$record->JID;           //redirect  
@@ -149,6 +150,8 @@ class JobController extends Controller {
         else    {    
             $application = new application;
             $job = job::model()->find('JID=:JID', array('JID' => $JID));
+            //$check = application::model()->find(':ID=ID&&:JID=JID',array(':ID'=>$ID,':JID'=>$JID));
+            // redirect if no resume is found
             $application->ID =$ID;
             $application->JID = $JID;
             $application->CID = $job ->CID; 

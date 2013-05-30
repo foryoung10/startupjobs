@@ -11,6 +11,7 @@ class JobForm extends CFormModel
         public $modified;
         public $location;
         public $tags;
+        public $category;
 	/**
 	 * Declares the validation rules.
 	 */
@@ -20,7 +21,7 @@ class JobForm extends CFormModel
 			// name, email, subject and body are required
 			array('title, description, type', 'required'),
 		
-                        array('salary','safe'),
+                        array('salary,category,location','safe'),
                     
                       array('created,modified','default',
                             'value'=>new CDbExpression('NOW()'),

@@ -2,13 +2,28 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 <p>
+
+<style type="text/css">
+body
+{
+    background-image:url("<?php echo Yii::app()->request->baseUrl.'/images/mainbackground.jpg' ?>");
+    height: auto;
+    width:auto;
+    background-color: #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -25px;
+}
+</style>
+
 <?php $this->widget('bootstrap.widgets.TbCarousel', array('items'=>array(
             array('image'=>'http://placehold.it/770x400&text=Second+thumbnail', 'label'=>'First Thumbnail label', 'caption'=>'Welcome to Startup Jobs'),
             array('image'=>'http://placehold.it/770x400&text=Second+thumbnail', 'label'=>'Second Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
             array('image'=>'http://placehold.it/770x400&text=Third+thumbnail', 'label'=>'Third Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
     ),)); 
 ?>
-
+</div>
 <div class="row-fluid">
       <h1>Premium Jobs</h1>
       <div class="clear">
@@ -35,7 +50,8 @@ $this->pageTitle=Yii::app()->name;
 <div class="clear">
         <?php $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'order'=>'created DESC',
-                                                                    'with'=>array('company'),),
+                                                                    //'with'=>array('company'),
+                                                                    ),
                                                                     'pagination'=>array(
                                                                                         'pageSize'=>15,),
                                                 )); ?>
@@ -45,7 +61,6 @@ $this->pageTitle=Yii::app()->name;
                 'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
                 'itemView'=>'_jobView',   // refers to the partial view named '_post'
                 //'ajaxUpdate'=>false,
-                //'htmlOptions' => array("class"=>"table table-striped"),   
                 'sortableAttributes'=>array(
                                 'title',
                                 'type' => 'Type',),    

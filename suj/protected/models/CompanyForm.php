@@ -4,12 +4,20 @@
 class CompanyForm extends CFormModel
 {
     public $cname;
-    public $about;
+    public $mission;
+    public $culture;
+    public $benefits;
     public $cemail;
     public $password2;
     public $image;
     public $address;
     public $contact;
+    public $website;
+    public $facebook;
+    public $awards;
+    public $started;
+    public $summary;
+    public $cover;
   //   public $mailingAddress;
  
     
@@ -27,13 +35,13 @@ class CompanyForm extends CFormModel
             // username must be at lenght minimal of 6 characters
             array('cname', 'length', 'max'=>45),
            // password must be at lenght minimal of 6 charaycters
-            array('address,contact, image, about','safe'),
+            array('address,contact, image, mission,culture,benefits','safe'),
             array('contact', 'length', 'min' => 8, 'max' => 8),
             array('contact', 'numerical'),
             
             // verifyCode needs to be entered correctly
-            array('image', 'file','on'=>'insert','types'=>'jpg, gif, png',  ),
-            array('image', 'file','on'=>'update','types'=>'jpg, gif, png', 'allowEmpty'=>true, ),
+            array('image, cover', 'file','on'=>'insert','types'=>'jpg, gif, png',  ),
+            array('image,cover', 'file','on'=>'update','types'=>'jpg, gif, png', 'allowEmpty'=>true, ),
            
 // array('title', 'length', 'max'=>255, 'on'=>'insert,update'),
      //       array('email, username','unique','className'=>'member'),
@@ -54,6 +62,8 @@ class CompanyForm extends CFormModel
             'password2' =>'Re Enter Password',
             'cemail'    => 'Email Address',
             'cname'     => 'Company Name',
+            'image'     => 'Company logo',
+            'cover'     => 'Cover Photo',
         );
     }
 

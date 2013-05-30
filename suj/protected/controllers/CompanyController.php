@@ -42,25 +42,44 @@ class CompanyController extends Controller  {
         //CActiveRecord for old one
         $CForm->attributes = $company->attributes;
         $CForm->address = str_replace('<br />', "", $company->address);
-        $CForm->about = str_replace('<br />', "", $company->about);
+        $CForm->mission = str_replace('<br />', "", $company->mission);
+        $CForm->culture = str_replace('<br />', "", $company->culture);
+        $CForm->benefits = str_replace('<br />', "", $company->benefits);
+        
         if (isset($_POST['CompanyForm'])) {
                     $CForm->attributes = $_POST['CompanyForm'];
                     $company->cname = $CForm->cname;
-                    $company->about = nl2br($CForm->about);
+                    $company->culture = nl2br($CForm ->culture);
+                    $company->benefits = nl2br($CForm ->benefits);
+                    $company->mission = nl2br($CForm->mission);
                     $company->address = nl2br($_POST['addressId']);
                     $company->contact=$CForm->contact;
                     $uploadedFile=CUploadedFile::getInstance($CForm,'image');
-                    $oldfilename = $company->image;  
+                    $uploadedFile2=CUploadedFile::getInstance($CForm,'cover');
+                    $oldfilename = $company->image;
+                    $oldfilename2 = $company->coverpicture;
+                    
                     if (!empty($uploadedFile)) {      
                                     $fileName = str_replace(' ', '',"{$company->CID}-{$uploadedFile}");  // random number + file name
                                     $company->image = $fileName;
+                         }
+                    if (!empty($uploadedFile2)) {      
+                                    $fileName2 = str_replace(' ', '',"{$company->CID}-{$uploadedFile2}");  // random number + file name
+                                    $company->coverpicture = $fileName2;
                          }          
+                         
                      if ($company->save())   {
                          if (!empty($uploadedFile)) {      
                                 $uploadedFile->saveAs(Yii::app()->basepath.'/../images/company/'.$fileName);
-                                if ($oldfilename != $fileName) {
+                                if ($oldfilename != $fileName && $oldfilename !=null) {
                                         unlink(Yii::app()->basePath . '/../images/company/' . $oldfilename);// image will uplode to rootDirectory/banner    
-                                }        
+                                }    
+                         }       
+                         if (!empty($uploadedFile2)) {      
+                                $uploadedFile2->saveAs(Yii::app()->basepath.'/../images/cover/'.$fileName2);
+                                if ($oldfilename2 != $fileName2 && $oldfilename !=null) {
+                                        unlink(Yii::app()->basePath . '/../images/cover/' . $oldfilename2);// image will uplode to rootDirectory/banner    
+                                }               
                                         
                          }   
                      }    
@@ -78,7 +97,11 @@ class CompanyController extends Controller  {
             $this->render('upgrade');
     }
        
-   
+   public function actionApplication()  {
+            $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
+        
+            $this->render('application',array('company' => $company));
+   }
         
 
 }

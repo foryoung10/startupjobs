@@ -1,11 +1,12 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - Update';
 $this->breadcrumbs = array(
-    'Profile' => array('/Update'),
+    'Company' => array('/Update'),
     'Update',);
 ?>
 
-<h1>Edit Company</h1>
+<h1>Update Company</h1>
+<br>
 
         <?php /** @var BootActiveForm $form */
             $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -18,8 +19,11 @@ $this->breadcrumbs = array(
                
                   
             <?php echo $form->errorSummary($CForm); ?>
-            <?php echo $form->textFieldRow($CForm, 'cname', array('size' =>40)); ?>
+            <?php echo $form->textFieldRow($CForm, 'cname', array('class' =>'span5')); ?>
             <?php echo $form->fileFieldRow($CForm, 'image'); ?>  
+            <?php echo $form->fileFieldRow($CForm, 'cover'); ?>  
+            <?php echo $form->textFieldRow($CForm, 'website', array('class' =>'span5')); ?>
+            <?php echo $form->textFieldRow($CForm, 'facebook', array('class' =>'span5')); ?>
             <?php echo $form->textFieldRow($CForm, 'contact'); ?>
             <div class="google map">
                 <div id="main">
@@ -27,7 +31,7 @@ $this->breadcrumbs = array(
                         <!--<form name="CompanyForm" method="post" action="site/registration">-->
                         <table border="0" cellspacing="0" cellpadding="0" id="optional2" style="display:compact" class="excludeCalendar">
                                    
-				    <?php echo $form->textAreaRow($CForm, 'address', array('class'=> 'span6', 
+				    <?php echo $form->textAreaRow($CForm, 'address', array('class'=> 'span8', 
                                                                                            'rows' => 3,
                                                                                            'id' => 'addressId',
                                                                                            'name' => 'addressId'));?>
@@ -149,11 +153,15 @@ $this->breadcrumbs = array(
                         </div>
                     </div>          
             
-            <?php echo $form->textAreaRow($CForm, 'about', array('class' => 'span6', 'rows' => 10)); ?>
-            <div class ="span2, offset1">
+            <?php echo $form->textAreaRow($CForm, 'summary', array('class' => 'span8', 'rows' => 3)); ?>
+            <?php echo $form->textAreaRow($CForm, 'mission', array('class' => 'span8', 'rows' => 5)); ?>
+            <?php echo $form->textAreaRow($CForm, 'culture', array('class' => 'span8', 'rows' => 5)); ?>
+            <?php echo $form->textAreaRow($CForm, 'benefits', array('class' => 'span8', 'rows' => 5)); ?>
+            <?php echo $form->textAreaRow($CForm, 'awards', array('class' => 'span8', 'rows' => 3)); ?>
+            
             <div class="form-actions">
                 <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Submit')); ?>
             </div>
-            </div>
+            
     <?php $this->endWidget(); ?>
             

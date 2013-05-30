@@ -8,48 +8,28 @@ $this->breadcrumbs = array(
 
       <h1>Jobs</h1>
 <?php
-        $premium=new CActiveDataProvider('job', array( 'criteria'=>array(
-                                                                    'limit'=>3,
-                                                                    'with'=>array('company'),     
-                                                                    'order'=>new CDbExpression('RAND()'),
-                                                                    ),
-                                                                    'pagination' => false
-                                                )); ?>
-        <table class="table ">
- <?php       $this->widget('bootstrap.widgets.TbListView', array(
-            'dataProvider'=>$premium,
-            'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
-            'itemView'=>'_jobView',   // refers to the partial view named '_post'
-            'itemsTagName'=>'table',
-            'itemsCssClass'=>'table',
-            'summaryText'=>'',
-            'ajaxUpdate'=>false,
-            //'htmlOptions' => array("class"=>"table table-striped"),   
-            
-));
- ?>
-<?php
         $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'order'=>'created DESC',
-                                                                    'with'=>array('company'), 
+                                                                    'with'=>array('company'),
+                                                                    'together' => true,    
+                                                             //       'scope'=>'Full-time',    
+                                                                   // 'condition'=>'type=:type',
+                                                                   // 'params'=>array(':type'=>'Full-time'),
                                                                     ),
                                                                     'pagination'=>array(
                                                                                         'pageSize'=>15,
                                                                     ),
-                                                )); ?>
-        <table class="table ">
- <?php       $this->widget('bootstrap.widgets.TbListView', array(
+                                                ));
+        $this->widget('zii.widgets.CListView', array(
             'dataProvider'=>$dataProvider,
             'cssFile' => Yii::app()->baseUrl . '/css/gridView.css',
             'itemView'=>'_jobView',   // refers to the partial view named '_post'
-            'ajaxUpdate'=>false,
-            //'htmlOptions' => array("class"=>"table table-striped"),   
             'sortableAttributes'=>array(
             'title',
             'type' => 'Type',    
-            
            // 'created'=>'Created',
     ),
 ));
- ?>
+?>
+
 </table>

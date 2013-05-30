@@ -118,5 +118,45 @@ class SiteController extends Controller
         $this->render('freelance',array('list'=>$list,
                                         'pages'=>$pages,));
        }
-        
+      public function actionForgetPassword() {
+        $forget = new forgetPassword;
+
+        if (isset($_POST['forgetPassword'])) {
+            $forget->attributes = $_POST['forgetPassword'];
+
+            if ($user = user::model()->find('email=:email', array('email' => $forget->email))) {
+
+                $pwd1 = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', 6)), 0, 6);
+                $key = 'AG*@#(129)!@K.><>]{[|sd`rjenfla0847&($#)!$Masdc$#@';
+                $pwd = hash('sha512', $key . ($pwd1));
+                $pwd = substr($pwd, 0, 100);
+                $user->password = $pwd;
+                $user->save();
+
+                $message = new YiiMailMessage;
+                $baseUrl = Yii::app()->request->baseUrl;
+                $serverPath = 'localhost/yii/uStyle';
+                $body = "Hi <font type=\"bold\">" . $user->name . "</font><br>
+                        <br>
+                        Your account <font type=\"bold\">" . $member->username . "</font>'s password has been reset.<br>
+                        <br>
+                        This is your new password : ".$pwd1."<br>
+                        <br>
+                        ------------------------------------------------------------------------<br>
+                        THIS IS AN AUTO-GENERATED MESSAGE - PLEASE DO NOT REPLY TO THIS MESSAGE!<br>
+                        ------------------------------------------------------------------------<br>
+                        <br>
+                        -------------<br>
+                        uStyle Team";
+                $message->setBody($body, 'text/html');
+                $message->subject = "uStyle Account Verification";
+                $message->addTo($model->email);
+                $message->from = 'noreply@uStyle.com';
+                Yii::app()->mail->send($message);
+                $this->redirect(array('site/page', 'view' => 'sentmail'));
+            }
+            $this->redirect(array('site/page', 'view' => 'emailNotFound'));
+        }
+        $this->render('login', array('forget' => $forget));
+    }   
 }
