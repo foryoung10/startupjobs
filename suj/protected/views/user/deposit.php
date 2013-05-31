@@ -25,6 +25,8 @@ $this->breadcrumbs=array(
    <?php        echo   '<H2>' .CHtml::link(CHtml::encode('Resume'),Yii::app()->baseUrl . '/resume/'.$user->resume, array('target'=>'_blank') );?>
 </H2>
    <?php echo $form->fileFieldRow($model, 'resume'); ?>  
+   <?php echo $form->fileFieldRow($model, 'photo'); ?> 
+   <?php echo $form->textAreaRow($model,'coverLetter', array('class'=>'span9', 'rows'=>10)); ?>
      <div class="form-actions">
             <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Submit')); ?>
      </div>                       

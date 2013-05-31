@@ -1,9 +1,11 @@
 <?php
 
 
-class ResumeForm extends CFormModel
+class ApplyJobForm extends CFormModel
 {
     public $resume;
+    public $photo;
+    public $coverLetter;
     
     
     /**
@@ -14,12 +16,18 @@ class ResumeForm extends CFormModel
     public function rules() {
         return array(
             // name, email, subject and body are required
-            array('resume ', 'safe'),
+            //array('resume, photo, coverLetter', 'safe'),
             // email has to be a valid email address
            // array('address,contact, image, about','safe'),
             
             // verifyCode needs to be entered correctly
-            array('resume', 'file','on'=>'insert','types'=>'pdf',  ),
+            array('coverLetter', 'safe'),
+            array('resume', 'file','types'=>'pdf','on'=>'insert','on'=>'update',  'allowEmpty'=>true,),
+            array('photo', 'file','on'=>'insert','types'=>'jpg, png,jpeg', 'allowEmpty'=>true, ),
+            array('photo', 'file','on'=>'update','types'=>'jpg, gif, png, jpeg', 'allowEmpty'=>true, ),
+           
+            // password must be at lenght minimal of 6 charaycters
+            
            
 // array('title', 'length', 'max'=>255, 'on'=>'insert,update'),
      //       array('email, username','unique','className'=>'member'),
@@ -36,6 +44,7 @@ class ResumeForm extends CFormModel
 
     public function attributeLabels() {
         return array(
+            'coverLetter'=>'Cover Letter',
         );
     }
 

@@ -138,35 +138,7 @@ class JobController extends Controller {
         $this-> render('jobList', array('jobList' =>$jobList));
     }
 
-    public function actionApply($JID) {
-        $ID = Yii::app()->user->getID();
-        // user not logged in
-        
-        //already applied
-        $check = application::model()->find(':ID=ID&&:JID=JID',array(':ID'=>$ID,':JID'=>$JID));
-        if ($check!=null)   {
-            $this->redirect(array('site/page', 'view'=>'error'));
-        }
-        else    {    
-            $application = new application;
-            $job = job::model()->find('JID=:JID', array('JID' => $JID));
-            //$check = application::model()->find(':ID=ID&&:JID=JID',array(':ID'=>$ID,':JID'=>$JID));
-            // redirect if no resume is found
-            $application->ID =$ID;
-            $application->JID = $JID;
-            $application->CID = $job ->CID; 
-        // send resume to employer 
-        //$user = user::model()->find(':ID=ID', array(':ID'=>$ID)); 
-            if ($application->save()) {      
-                         // array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                                                            
-                            $this->redirect(array('site/page', 'view'=>'success'));
-            }
-        }
-        
-    }
+   
     
 }
-    
-
 ?>

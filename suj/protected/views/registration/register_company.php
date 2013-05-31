@@ -25,7 +25,7 @@ Please fill out the form with your particulars
         <?php echo $form->textFieldRow($model, 'cemail', array('class' => 'span5', 'rows' => 1)); ?>
         <?php echo $form->textFieldRow($model, 'contact'); ?>
         <?php echo $form->textAreaRow($model,'address', array('class'=>'span8', 'rows'=>3)); ?>
-        <?php echo $form->textAreaRow($model,'about', array('class'=>'span8', 'rows'=>8)); ?>
+        <?php echo $form->textAreaRow($model,'mission', array('class'=>'span8', 'rows'=>8)); ?>
         <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Submit')); ?>
         </div>    

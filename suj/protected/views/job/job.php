@@ -33,7 +33,7 @@ $this->breadcrumbs = array(
                                         'label'=>'Apply Online',
                                         'type'=>'primary', 
                                         'size'=>'large', 
-                                        'url'=>Yii::app()->createUrl("job/apply", array("JID"=>$job->JID )),    
+                                        'url'=>Yii::app()->createUrl("user/applyJob", array("JID"=>$job->JID )),    
 )); ?>  
 
 </div>

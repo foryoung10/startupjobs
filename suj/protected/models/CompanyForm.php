@@ -17,7 +17,7 @@ class CompanyForm extends CFormModel
     public $awards;
     public $started;
     public $summary;
-    public $cover;
+    public $cover_letter;
   //   public $mailingAddress;
  
     
