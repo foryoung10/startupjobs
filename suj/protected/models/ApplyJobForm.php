@@ -22,9 +22,14 @@ class ApplyJobForm extends CFormModel
             
             // verifyCode needs to be entered correctly
             array('coverLetter', 'safe'),
-            array('resume', 'file','types'=>'pdf','on'=>'insert','on'=>'update',  'allowEmpty'=>true,),
-            array('photo', 'file','on'=>'insert','types'=>'jpg, png,jpeg', 'allowEmpty'=>true, ),
-            array('photo', 'file','on'=>'update','types'=>'jpg, gif, png, jpeg', 'allowEmpty'=>true, ),
+            array('resume', 'file',
+                  'types'=>'pdf,doc',
+                  'maxSize' => 1024 * 1024 * 2, 
+                  'allowEmpty'=>true,),
+            array('photo', 'file',
+                  'types'=>'jpg, png,jpeg, gif',
+                  'maxSize' => 1024 * 1024 * 1,   
+                  'allowEmpty'=>true, ),
            
             // password must be at lenght minimal of 6 charaycters
             

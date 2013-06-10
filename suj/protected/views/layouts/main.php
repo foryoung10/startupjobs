@@ -5,7 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content="en" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
-    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <meta content="We bring great talents to great startups. StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | Starup Careers | Startup Career" name="description">
+<meta content="blog" property="og:type" >
+<meta content="StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups" property="og:title">
+<meta content="We bring great talents to great startups." property="og:description">
+<meta content="http://www.startupjobs.asia/" property="og:url">
+<meta content="http://startupjobs.asia/wp-content/uploads/company_logos/2012/12/StartupJobsAsia_Asia_Logo-300x56.png" property="og:image">
+<meta content="StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups" property="og:site_name">
+<meta content="summary" name="twitter:card">
 </head>
 <body>
 </body>

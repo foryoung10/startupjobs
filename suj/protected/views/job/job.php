@@ -4,7 +4,8 @@ $this->breadcrumbs = array(
     'Job',
 );
 ?>
-
+v
+<title>StartUp Hire: <?php echo "{$job->title} {$company->cname} {$job->location}"?></title>
 
               <?php $url = str_replace(' ','-',$company->cname);?> 
               <h1><?php echo CHtml::encode($job->title); ?></h1>      

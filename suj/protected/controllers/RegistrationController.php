@@ -89,8 +89,9 @@ class RegistrationController extends Controller {
        public function actionRegisterCompany() {
             $model = new CompanyForm;
             if (isset($_POST['CompanyForm'])) {
-                  $ID = Yii::app()->user->getID();
                   $model->attributes = $_POST['CompanyForm'];
+                  if ($model->validate())   {  
+                  $ID = Yii::app()->user->getID();
                      //generate activation ke
                   $company = new company;
                   
@@ -98,7 +99,7 @@ class RegistrationController extends Controller {
                   $company->address = $model->address;
                   $company->contact = $model->contact;
                   $company->cname = $model->cname;
-                  $company->about = nl2br($model->about);
+                  $company->mission = nl2br($model->mission);
                   $company->cemail = $model->cemail;
                   $company->status = 0;
                   $uploadedFile=CUploadedFile::getInstance($model,'image');
@@ -120,6 +121,8 @@ class RegistrationController extends Controller {
                   $approve->CID = $company->CID;
                   if ($approve->save())
                             $this->redirect(array('company/company'));
+            
+                  }
             }
         $this->render('register_company', array('model' => $model));
     }

@@ -9,6 +9,8 @@ $this->breadcrumbs=array(
 );
 ?>
 
+<title>Login | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
+
 <h1>Login</h1>
 
 <p>Please fill out the following form abc with your login credentials:</p>
@@ -32,6 +34,16 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  <div class="form-actions">
     <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>'Login')); ?>
     <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'reset', 'label'=>'Reset')); ?>
-</div>
+     <?php $this->widget('bootstrap.widgets.TbButton', array(
+                                        'label'=>'Forget Password',
+                                        'type'=>'info', 
+                                        'size'=>'', 
+                                        'url'=>Yii::app()->createUrl("registration/forgetPassword"),    
+)); ?>  
+
+ </div>
+
+
+
 
 <?php $this->endWidget(); ?>

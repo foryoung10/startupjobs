@@ -5,6 +5,8 @@
  * and open the template in the editor.
  */
 ?>
+<title>StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
+
 
 <div class="view">  
 <?php  $CID = Yii::app()->user->getID(); ?>

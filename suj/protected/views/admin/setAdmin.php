@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 	'Set Admin',
 );
 ?>
+<title>StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/inspired_style.css" rel="stylesheet" type="text/css" />
 

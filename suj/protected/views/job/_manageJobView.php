@@ -10,7 +10,7 @@
          <div class ="span2">
                     <?php echo CHtml::link($data->title, array('job/job', 'JID' => $data->JID)) ; ?>
          </div>
-         <div class ="span2">
+         <div class ="span4">
                     <?php echo $data->description; ?>
          </div>
          <div class="btn-toolbar">
@@ -27,4 +27,3 @@
         </div>
    </table>
 
-?>

@@ -37,7 +37,7 @@ class CompanyController extends Controller  {
     
     public function actionUpdate() {
         $ID = Yii::app()->user->getID();
-        $CForm = new CompanyForm;
+        $CForm = new UpdateForm();
         $company = company::model()->find('ID=:ID', array('ID' => $ID));
         //CActiveRecord for old one
         $CForm->attributes = $company->attributes;
@@ -46,8 +46,9 @@ class CompanyController extends Controller  {
         $CForm->culture = str_replace('<br />', "", $company->culture);
         $CForm->benefits = str_replace('<br />', "", $company->benefits);
         
-        if (isset($_POST['CompanyForm'])) {
-                    $CForm->attributes = $_POST['CompanyForm'];
+        if (isset($_POST['UpdateForm'])) {
+                   $CForm->attributes = $_POST['UpdateForm'];
+                   if ($CForm->validate()) {
                     $company->cname = $CForm->cname;
                     $company->culture = nl2br($CForm ->culture);
                     $company->benefits = nl2br($CForm ->benefits);
@@ -55,7 +56,7 @@ class CompanyController extends Controller  {
                     $company->address = nl2br($_POST['addressId']);
                     $company->contact=$CForm->contact;
                     $uploadedFile=CUploadedFile::getInstance($CForm,'image');
-                    $uploadedFile2=CUploadedFile::getInstance($CForm,'cover');
+                    $uploadedFile2=CUploadedFile::getInstance($CForm,'coverpicture');
                     $oldfilename = $company->image;
                     $oldfilename2 = $company->coverpicture;
                     
@@ -83,12 +84,15 @@ class CompanyController extends Controller  {
                                         
                          }   
                      }    
-                         
-          $this->redirect(array('company/Company'));
+                   
+                     $this->redirect(array('company/Company'));
+                   }      
+                    
                     
                     }             
        
-           $this->render('update', array('CForm' => $CForm, 'company' => $company, ));
+           $this->render('update', array('CForm' => $CForm, 
+                                         'company' => $company, ));
     }
     //upgrade company account TBD    
     public function actionUpgrade() {

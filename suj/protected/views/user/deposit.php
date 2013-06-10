@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 	'Deposit Resume',
 );
 ?>
+<title>Deposit Resume | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <h1>Deposit your resume with us</h1>
 <h3>Please save resume into PDF or Microsoft Word format </h3>
@@ -20,10 +21,9 @@ $this->breadcrumbs=array(
                                                                                 'clientOptions'=>array('validateOnSubmit'=>true,),
                                                                                 'htmlOptions' => array('enctype' => 'multipart/form-data'),
                                                                                 )); ?>
-    
+   <?php echo $form->errorSummary($model); ?> 
    <?php $resume=Yii::app()->request->baseUrl.'/resume/'.$user->resume?>
-   <?php        echo   '<H2>' .CHtml::link(CHtml::encode('Resume'),Yii::app()->baseUrl . '/resume/'.$user->resume, array('target'=>'_blank') );?>
-</H2>
+   <?php        echo   '<H2>' .CHtml::link(CHtml::encode('Resume'),Yii::app()->baseUrl . '/resume/'.$user->resume, array('target'=>'_blank') );?></H2>
    <?php echo $form->fileFieldRow($model, 'resume'); ?>  
    <?php echo $form->fileFieldRow($model, 'photo'); ?> 
    <?php echo $form->textAreaRow($model,'coverLetter', array('class'=>'span9', 'rows'=>10)); ?>

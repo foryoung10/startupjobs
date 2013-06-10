@@ -4,6 +4,7 @@ $this->breadcrumbs = array(
     'All Jobs',
 );
 ?>
+<title>StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 
       <h1>Premium</h1>
@@ -46,4 +47,11 @@ $this->breadcrumbs = array(
 <body onload="setup()">
   <button id="runDemoButton" value="buy"><b>Purchase</b></button>
 </body>
- 
+ <div class="form-actions">
+       <?php $this->widget('bootstrap.widgets.TbButton', array(
+                                        'label'=>'Apply Online',
+                                        'type'=>'primary', 
+                                        'size'=>'large', 
+                                        'url'=>Yii::app()->createUrl("job/buy"),    
+)); ?>  
+ </div>

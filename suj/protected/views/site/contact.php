@@ -9,6 +9,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
+<title> Contact | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
+
+
 <h1>Connect with us</h1>
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 <div class="flash-success">

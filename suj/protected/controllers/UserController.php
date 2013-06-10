@@ -84,26 +84,26 @@ class UserController extends Controller
        $user = user::model()->find('ID=:ID',array('ID'=>$ID));
        $model->coverLetter = str_replace('<br />', "", $user->coverLetter);
             if (isset($_POST['ApplyJobForm'])) {
-                $ID = Yii::app()->user->getID();
                 //check if applied
-                $check = application::model()->find(':ID=ID&&:JID=JID',array(':ID'=>$ID,':JID'=>$JID));
-                $uploadedFile=CUploadedFile::getInstance($model,'resume');
+                $model->attributes = $_POST['ApplyJobForm'];
+                if ($model->validate()) {
+                    $check = application::model()->find(':ID=ID&&:JID=JID',array(':ID'=>$ID,':JID'=>$JID));
+                    $uploadedFile=CUploadedFile::getInstance($model,'resume');
                 // if the user did not upload a file and also no resume stored
-                if ($check!=null||(empty($uploadfile)&&($user->resume == null)))  {    // already applied to the job
-                     $this->redirect(array('site/page', 'view'=>'error'));
-                }
+                     if ($check!=null||(empty($uploadfile)&&($user->resume == null)))  {    // already applied to the job
+                             $this->redirect(array('site/page', 'view'=>'error'));
+                     }
                 // redirect if no resume is found
-               
-                else {
-                    $oldfilename = $user->resume;
-                    $application = new application;
-                    $job = job::model()->find('JID=:JID', array('JID' => $JID));
+                    else {
+                        $oldfilename = $user->resume;
+                        $application = new application;
+                        $job = job::model()->find('JID=:JID', array('JID' => $JID));
                     
-                    $user->coverLetter = nl2br($model->coverLetter);
-                    $application->cover_letter = nl2br($model->coverLetter);
-                    $application->ID =$ID;
-                    $application->JID = $JID;
-                    $application->CID = $job ->CID; 
+                        $user->coverLetter = nl2br($model->coverLetter);
+                        $application->cover_letter = nl2br($model->coverLetter);
+                        $application->ID =$ID;
+                        $application->JID = $JID;
+                        $application->CID = $job ->CID; 
                     // send resume to employer 
                     //$user = user::model()->find(':ID=ID', array(':ID'=>$ID)); 
                     if ($application->save()) {    
@@ -114,7 +114,7 @@ class UserController extends Controller
                                         $uploadedFile->saveAs(Yii::app()->basepath.'/../jobApplication/'.$fileName);
                                         $this->redirect(array('site/page', 'view'=>'success'));
                                     }
-                            }   
+                            }           //uploaded file is empty
                             else {      //use previous resume
                                     $fileName = $application->ID.'-'.$user->resume;
                                     $application->resume =$fileName;
@@ -128,8 +128,30 @@ class UserController extends Controller
                     }
                 }
             }
+            }
             $this->render('applyJob', array('user'=>$user,
                                          'model'=>$model));
 }
     
+public function actionChangePassword()  {
+        $model = new EditProfileForm;
+        $user=user::model()->find(':ID=ID', array('ID'=>Yii::app()->user->getID()));
+        //CActiveRecord for old one
+        if (isset($_POST['EditProfileForm'])) {
+            $pForm->attributes = $_POST['EditProfileForm'];
+            $key = 'AG*@#(129)!@K.><>]{[|sd`rjenfla0847&($#)!$Masdc$#@';
+            $pwd = hash('sha512', $key . ($model->oldPassword));
+            $pwd = substr($pwd, 0, 100);
+
+            $oldPwd = $user->password;
+            if ($pwd == $oldPwd) {
+                    $pwd1 = hash('sha512', $key . ($model->newPassword));
+                    $user->password = substr($pwd1, 0, 100);
+                    if ($user->save())  
+                        $this->redirect();
+                }
+            } 
+        }
+    
+
 }

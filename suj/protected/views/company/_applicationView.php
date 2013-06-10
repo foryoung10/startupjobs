@@ -6,6 +6,7 @@
  */
 ?>   
 
+
           <div class ="span2 ">
                     <?php echo CHtml::link($data->job->title, array('job/job', 'JID' => $data->JID)) ; ?>
          </div>

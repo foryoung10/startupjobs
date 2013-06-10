@@ -4,6 +4,7 @@ $this->breadcrumbs = array(
     'Manage Accounts',
 );
 ?>
+<title>Approve Company | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 
 <h1>Manage Accounts</h1>

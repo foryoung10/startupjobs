@@ -5,6 +5,8 @@
  * and open the template in the editor.
  */
 ?>
+<title>Manage Jobs | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
+
 <h1> Manage Jobs </h1>
 
 <?php

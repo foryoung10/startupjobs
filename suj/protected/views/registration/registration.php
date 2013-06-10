@@ -5,6 +5,7 @@ $this->breadcrumbs = array(
 );
 ?>
 
+<title>Registration | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 
 <p>

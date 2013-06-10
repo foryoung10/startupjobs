@@ -4,54 +4,24 @@ $this->breadcrumbs=array(
 	'Forget Password',
 );
 ?>
-<div id="inspired_wrapper">    
+<title>Forget Password | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
-    <div id="inspired_content_top"></div>
-
-    <div id="inspired_content">
-        <div id="inspired_big_content">
          
                 <h3>Request for Username and Password</h3>
                 <br>
            
                 Enter your Email address
-
-                <div class="form">
-                    <?php
-                    $form = $this->beginWidget('CActiveForm', array(
-                        'id' => 'forgetPw',
-                        'enableClientValidation' => true,
-                        'clientOptions' => array(
-                            'validateOnSubmit' => true,
-                        ),
-                            ));
-                    ?>
-                    <!--    
-                    <div class="row">
-
-                        <?php echo $form->labelEx($model, 'Username'); ?>
-                        <?php echo $form->textField($model, 'username'); ?>
-                        <?php echo $form->error($model, 'username'); ?>
-                    </div>
-                    -->
-                    <div class="row">
-                        <?php echo $form->labelEx($model, 'email'); ?>
-                        <?php echo $form->textField($model, 'email'); ?>
-                        <?php echo $form->error($model, 'email'); ?>
-                    </div>
-                    
-                    <div class="row buttons">
-                        <?php echo CHtml::submitButton('Submit'); ?>
-                    </div>
-
-                    <?php $this->endWidget(); ?>					
-                </div>  
-            </div>
-  
-
-        <div class="cleaner"></div>
-    </div>
-</div> <!-- end of wrapper -->
-
-
-
+<?php /** @var BootActiveForm $form */
+            $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+                                                                                'id'=>'horizontalForm',
+                                                                                'type'=>'horizontal',
+                                                                                'enableClientValidation'=>true,
+                                                                                'clientOptions'=>array('validateOnSubmit'=>true,),
+                                                                                )); ?>
+        
+        <?php echo $form->textFieldRow($model, 'email', array('class' =>'span3')); ?>
+        
+ <div class="form-actions">
+        <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Submit')); ?>
+        </div>    
+<?php $this->endWidget(); ?>

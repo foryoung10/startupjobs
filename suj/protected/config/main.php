@@ -3,6 +3,8 @@
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('paypal', dirname(__FILE__).'/../extensions/paypal');
+
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 
@@ -54,7 +56,28 @@ return array(
                 
                  ),
 		// uncomment the following to enable URLs in path-format
-		
+		'Paypal' => array(
+                            'class'=>'paypal.components.Paypal',
+                            'apiUsername' => 'foryoung89@gmail.com',
+                            'apiPassword' => '12345678',
+                            'apiSignature' => 'EHKjjBAUrVwSza3ZvAfagC9Lh8-WnNpH7hrnY4nL9TynyGUEUPh7xAkyIYCx',
+                            'apiLive' => false,
+ 
+                            'returnUrl' => 'paypal/confirm/', //regardless of url management component
+                            'cancelUrl' => 'paypal/cancel/', //regardless of url management component
+ 
+                            // Default currency to use, if not set USD is the default
+                            'currency' => 'SGD',
+ 
+                            // Default description to use, defaults to an empty string
+                            //'defaultDescription' => '',
+ 
+                            // Default Quantity to use, defaults to 1
+                            //'defaultQuantity' => '1',
+ 
+                           //The version of the paypal api to use, defaults to '3.0' (review PayPal documentation to include a valid API version)
+                           //'version' => '3.0',
+                ),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
                         'showScriptName'=>false,
