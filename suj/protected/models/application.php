@@ -22,6 +22,19 @@ class application extends CActiveRecord {
         
         );
     } 
+    public function beforeSave() {
+        date_default_timezone_set('Asia/Singapore');
+        $date = date('Y-m-d H:i:s');
+        if ($this->isNewRecord) {
+                $this->applied = $date;
+           
+        }
+        
+ 
+        return parent::beforeSave();
+    }
+    
+    
 }
 
 ?>

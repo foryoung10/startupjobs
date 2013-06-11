@@ -3,7 +3,7 @@
 class SearchController extends Controller {
 
     public function actionSearch() {
-        $member = array();
+        $results = array();
         $model = new search;
         $product = array();
         $shop = array();

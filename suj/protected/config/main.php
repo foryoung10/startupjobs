@@ -12,7 +12,7 @@ Yii::setPathOfAlias('paypal', dirname(__FILE__).'/../extensions/paypal');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Startup Jobs Asia',
-
+        
 	// preloading 'log' component
 	'preload'=>array('log'),
         
@@ -58,13 +58,13 @@ return array(
 		// uncomment the following to enable URLs in path-format
 		'Paypal' => array(
                             'class'=>'paypal.components.Paypal',
-                            'apiUsername' => 'foryoung89@gmail.com',
-                            'apiPassword' => '12345678',
-                            'apiSignature' => 'EHKjjBAUrVwSza3ZvAfagC9Lh8-WnNpH7hrnY4nL9TynyGUEUPh7xAkyIYCx',
+                            'apiUsername' => 'foryoung89-facilitator_api1.gmail.com',
+                            'apiPassword' => '1370866813',
+                            'apiSignature' => 'AGwhn2LphfWjyIRWvc3SpX2Os17IAcKaCktBlnu42LdKuy3XaY6HtRZ9',
                             'apiLive' => false,
  
-                            'returnUrl' => 'paypal/confirm/', //regardless of url management component
-                            'cancelUrl' => 'paypal/cancel/', //regardless of url management component
+                            'returnUrl' => 'job/confirmPayment', //regardless of url management component
+                            'cancelUrl' => 'site/index/', //regardless of url management component
  
                             // Default currency to use, if not set USD is the default
                             'currency' => 'SGD',
@@ -155,8 +155,11 @@ return array(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
+        // global variables
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+                'job_limit'=>'3',
+                'job_expire'=>'90',
 	),
 );

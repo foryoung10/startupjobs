@@ -23,11 +23,14 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'horizontalForm',
     'type'=>'horizontal',
     'enableClientValidation'=>true,
-	'clientOptions'=>array('validateOnSubmit'=>true),
+    'clientOptions'=>array('validateOnSubmit'=>true),
+    
 )); ?>
  
-<?php echo $form->textFieldRow($model, 'username', array('class'=>'span3')); ?>
-<?php echo $form->passwordFieldRow($model, 'password', array('class'=>'span3')); ?>
+<?php echo $form->textFieldRow($model, 'username', array('class'=>'span3',
+                                                         'placeholder'=>"Username",)); ?>
+<?php echo $form->passwordFieldRow($model, 'password', array('class'=>'span3',
+                                                             'placeholder'=>"Password")); ?>
 <?php echo $form->checkboxRow($model, 'rememberMe'); ?>
  
 <?php // $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Login')); ?>

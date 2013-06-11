@@ -42,7 +42,7 @@ class RegistrationController extends Controller {
         if (isset($_POST['RegistrationForm'])) {
               $model->attributes = $_POST['RegistrationForm'];
               if ($model->validate()) {       //generate activation key
-               // $activationKey = mt_rand() . mt_rand() . mt_rand() . mt_rand() . mt_rand();
+               $activationKey = mt_rand() . mt_rand() . mt_rand() . mt_rand() . mt_rand();
                 // $model->activationKey= mt_rand() . mt_rand() . mt_rand() . mt_rand() . mt_rand();
                         $key = 'AG*@#(129)!@K.><>]{[|sd`rjenfla0847&($#)!$Masdc$#@';
                         $pwd = hash('sha512', $key . ($model->password));
@@ -76,8 +76,8 @@ class RegistrationController extends Controller {
                                 $message->subject = "StartUp Jobs Asia Account Verification";
                                 $message->addTo($model->email);
                                 $message->from = 'noreply@StartUpJobsAsia.com';
-                                Yii::app()->mail->send($message);
-                                $this->redirect(array('site/page', 'about' => 'success'));
+               //                 Yii::app()->mail->send($message);
+                                $this->redirect(array('site/page', 'view' => 'success'));
 			}
 		}
         }

@@ -33,8 +33,7 @@ class Paypal extends CComponent{
 	/**
 	# The url (relative to base url) to return the customer after a successful payment
 	*/
-    public $returnUrl;
-	
+    public $returnUrl = true;
 	/**
 	# The url (relative to base url) to return the customer if he/she cancels the payment
 	*/

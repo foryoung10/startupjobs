@@ -2,18 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="language" content="en" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
-    <meta content="We bring great talents to great startups. StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | Starup Careers | Startup Career" name="description">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
+<meta content="abcd We bring great talents to great startups. StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | Starup Careers | Startup Career" name="description">
 <meta content="blog" property="og:type" >
 <meta content="StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups" property="og:title">
 <meta content="We bring great talents to great startups." property="og:description">
-<meta content="http://www.startupjobs.asia/" property="og:url">
-<meta content="http://startupjobs.asia/wp-content/uploads/company_logos/2012/12/StartupJobsAsia_Asia_Logo-300x56.png" property="og:image">
+<meta content="<?php Yii::app()->request->baseUrl;?>" property="og:url">
 <meta content="StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups" property="og:site_name">
 <meta content="summary" name="twitter:card">
-</head>
+
+    </head>
+    
+<!--
+    <link rel="canonical" href="<?php Yii::app()->request->baseUrl;?>" />
+-->
 <body>
 </body>
 <div class="container" id="page">

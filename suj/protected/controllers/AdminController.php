@@ -51,7 +51,7 @@ class AdminController extends Controller
                       $message->setBody($body, 'text/html');
                       $message->subject = "StartUp Jobs Asia Coporate Accounts";
 
-                     $message->addTo($company->email);
+                     $message->addTo($company->cemail);
                      $message->from = 'admin@StartUpJobsAsia.com';
                      Yii::app()->mail->send($message);
                      $this->redirect(array('admin/manage'));

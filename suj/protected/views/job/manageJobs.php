@@ -14,7 +14,7 @@
                                                                     'with'=>array('company'),
                                                                     'condition'=>'ID=:ID',
                                                                     'params'=>array(':ID'=>Yii::app()->user->getID()),
-                                                                    'order'=>'created DESC',
+                                                                    'order'=>'t.created DESC',
                                                                     
                                                                     ),
                                                                     'pagination'=>array(

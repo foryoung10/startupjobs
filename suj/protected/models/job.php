@@ -52,7 +52,24 @@ class job extends CActiveRecord {
             
         );
     }
+    public function beforeSave() {
+        date_default_timezone_set('Asia/Singapore');
+        $date = date('Y-m-d H:i:s');
+        if ($this->isNewRecord) {
+                $this->created = $date;
+                $date2 = date_create();
+                $date2->add(new DateInterval('P'.Yii::app()->params['job_expire'].'D'));
+                $date2 = $date2->format('Y-m-d H:i:s');
+                $this->expire = $date2;
+        }
+        $this->modified = $date;
+ 
+    return parent::beforeSave();
 }
+    
+    
+}
+
 
 
 ?>

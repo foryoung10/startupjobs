@@ -24,6 +24,16 @@ public function relations() {
     );
   }
     
+     public function beforeSave() {
+        $date = date('Y-m-d H:i:s');
+        if ($this->isNewRecord) {
+                $this->created = $date;
+           
+        }
+        $this->modified = $date;
+ 
+        return parent::beforeSave();
+    }
     
 }
 

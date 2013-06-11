@@ -25,12 +25,16 @@ body
     ),)); 
 ?>
 </div>
+<?php date_default_timezone_set('Asia/Singapore');?>
 <div class="row-fluid">
       <h1>Premium Jobs</h1>
       <div class="clear">
+          
       <?php $premium=new CActiveDataProvider('job', array( 'criteria'=>array(
                                                                     'limit'=>3,
                                                                     'order'=>new CDbExpression('RAND()'),
+                                                                    //'condition'=>'expire >= today',
+                                                                    //'params'=>array('today'=>date('Y-m-d H:i:s')),
                                                                     'with'=>array('company'), ),
                                                                     'pagination' => false
                                                 )); ?>
@@ -50,8 +54,11 @@ body
 <h1>Latest Jobs</h1>
 <div class="clear">
         <?php $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
-                                                                    'order'=>'created DESC',
-                                                                    //'with'=>array('company'),
+                                                                   'order'=>'created DESC',
+                                                                   // show all jobs that are not expired
+                                                                   //'condition'=>'expire >=today',
+                                                                   //'params'=>array('today'=>date('Y-m-d H:i:s')),
+                                                                    'with'=>array('company'),
                                                                     ),
                                                                     'pagination'=>array(
                                                                                         'pageSize'=>15,),
