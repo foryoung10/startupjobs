@@ -1,11 +1,9 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+$this->breadcrumbs = array(
+    'Manage Jobs',
+);
+$this->pageTitle = 'Manage Jobs | '.Yii::app()->params['pageTitle'];
 ?>
-<title>Manage Jobs | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <h1> Manage Jobs </h1>
 

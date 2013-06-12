@@ -56,7 +56,8 @@ abstract class EFeedItemAbstract extends CComponent {
 	{
 		$this->tags->add($tag, new EFeedTag($tag, $content,(!is_array($attributes)? array() : $attributes)));
 	}
-	/**
+	
+        /**
 	 * 
 	 * Returns specific tag by name
 	 * @param string $name of the tag

@@ -37,7 +37,7 @@ class CompanyController extends Controller  {
     
     public function actionUpdate() {
         $ID = Yii::app()->user->getID();
-        $CForm = new UpdateForm();
+        $CForm = new UpdateForm;
         $company = company::model()->find('ID=:ID', array('ID' => $ID));
         //CActiveRecord for old one
         $CForm->attributes = $company->attributes;
@@ -53,7 +53,7 @@ class CompanyController extends Controller  {
                     $company->culture = nl2br($CForm ->culture);
                     $company->benefits = nl2br($CForm ->benefits);
                     $company->mission = nl2br($CForm->mission);
-                    $company->address = nl2br($_POST['addressId']);
+                    $company->address = nl2br($CForm->address);
                     $company->contact=$CForm->contact;
                     $uploadedFile=CUploadedFile::getInstance($CForm,'image');
                     $uploadedFile2=CUploadedFile::getInstance($CForm,'coverpicture');
@@ -72,6 +72,10 @@ class CompanyController extends Controller  {
                      if ($company->save())   {
                          if (!empty($uploadedFile)) {      
                                 $uploadedFile->saveAs(Yii::app()->basepath.'/../images/company/'.$fileName);
+                                $image = Yii::app()->image->load(Yii::app()->basepath.'/../images/company/'.$fileName);
+                                $image->resize(180, 180);
+                                $image->save(Yii::app()->basepath.'/../images/company/180/'.$fileName);
+                                
                                 if ($oldfilename != $fileName && $oldfilename !=null) {
                                         unlink(Yii::app()->basePath . '/../images/company/' . $oldfilename);// image will uplode to rootDirectory/banner    
                                 }    

@@ -46,8 +46,12 @@ class JobController extends Controller {
      */
     public function actionSubmitJob() {
        $model = new JobForm;
+       $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
+       if ($company ->status == 0) {
+            $this->redirect(array('site/index'));
+        }
        if (isset($_POST['JobForm'])) {
-                       $company = company::model()->find('ID=:ID', array('ID' => Yii::app()->user->getID()));
+                       
                        $model->attributes = $_POST['JobForm'];
                        if ($company ->status == 1) {
                             if ($model->validate()) {
@@ -65,7 +69,20 @@ class JobController extends Controller {
                                       //$record->expiration = $date->add(new DateInterval('P30D'));; 
                                       if ($record->save()) {      
                                             $JID=$record->JID;           //redirect  
+                                            $feed = new feeds;
+                                            $feed->title = "{$record->title} {$company->cname} {$record->location}";
+                                            $feed->description=substr($record->description, 0, 70);
+                                            $feed->url = "{$record->title} {$company->cname} {$record->location}";
+                                            $feed->category ='Job Post' ;
+                                            $feed->author =$company->cname ;
+                                            $feed->JID = $record->JID;
+                                            $feed->image = $company->image;
+                                            
+                                            $feed->save();
+                                            
                                             $this->redirect(array('job/premium','JID' => $JID));
+                                            
+                                          
                                        }
                             }   
                        }

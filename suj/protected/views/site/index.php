@@ -1,8 +1,8 @@
 <?php
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle="StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups";
 ?>
-<p>
-<title>StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
+
+<title>Submit Job | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <style type="text/css">
 body
@@ -17,6 +17,8 @@ body
     margin-top: -25px;
 }
 </style>
+
+
 
 <?php $this->widget('bootstrap.widgets.TbCarousel', array('items'=>array(
             array('image'=>'http://placehold.it/770x400&text=Second+thumbnail', 'label'=>'First Thumbnail label', 'caption'=>'Welcome to Startup Jobs'),
@@ -54,7 +56,7 @@ body
 <h1>Latest Jobs</h1>
 <div class="clear">
         <?php $dataProvider=new CActiveDataProvider('job', array( 'criteria'=>array(
-                                                                   'order'=>'created DESC',
+                                                                   'order'=>'t.created DESC',
                                                                    // show all jobs that are not expired
                                                                    //'condition'=>'expire >=today',
                                                                    //'params'=>array('today'=>date('Y-m-d H:i:s')),

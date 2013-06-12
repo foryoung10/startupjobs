@@ -1,10 +1,9 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Manage Accounts';
 $this->breadcrumbs = array(
     'Manage Accounts',
 );
+$this->pageTitle = 'Approve Company | '.Yii::app()->params['pageTitle'];
 ?>
-<title>Approve Company | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 
 <h1>Manage Accounts</h1>

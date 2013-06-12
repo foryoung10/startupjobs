@@ -1,10 +1,9 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Update';
 $this->breadcrumbs = array(
     'Company' => array('/Update'),
     'Update',);
+$this->pageTitle = 'Update Company | '.Yii::app()->params['pageTitle'];
 ?>
-<title>Update Company | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <h1>Update Company</h1>
 <br>

@@ -27,7 +27,7 @@ class user extends CActiveRecord {
                 $this->registered = $date;
            
         }
-        $this->modified = $date;
+      //  $this->modified = $date;
  
         return parent::beforeSave();
     }

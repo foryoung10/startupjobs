@@ -102,6 +102,7 @@ class EFeed extends CComponent{
 		
 		$this->feedElements->itemAt('channels')->add( $tag, $content );
 	}
+        
 	/**
 	 * 
 	 * Adds an array of channel elements 
@@ -183,8 +184,8 @@ class EFeed extends CComponent{
 	public function setLink($link)
 	{
 		$validator = new CUrlValidator();
-		if(!$validator->validateValue($link))
-			throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
+		//if(!$validator->validateValue($link))
+		//	throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
 			
 		$this->addChannelTag('link', $link);
 	}
@@ -212,8 +213,8 @@ class EFeed extends CComponent{
 	public function setImage($title, $link, $url)
 	{
 		$validator = new CUrlValidator();
-		if(!$validator->validateValue($link))
-			throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
+	//	if(!$validator->validateValue($link))
+	//		throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
 			
 		$this->addChannelTag('image', array('title'=>$title, 'link'=>$link, 'url'=>$url));
 	}

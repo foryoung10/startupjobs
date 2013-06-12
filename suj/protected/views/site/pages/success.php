@@ -1,18 +1,13 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Registration is Successful';
 $this->breadcrumbs=array(
 	'success',
 );
+$this->pageTitle = 'Success | '.Yii::app()->params['pageTitle'];
 ?>
 
 
 
-<div id="inspired_wrapper">    
 
-    <div id="inspired_content_top"></div>
-
-    <div id="inspired_content">
-        <div id="inspired_big_content">
       
 
                 <h3> You have been successfully registered </h3>
@@ -24,11 +19,5 @@ $this->breadcrumbs=array(
                     <br>
                     Please verify your email account.
                
-            <img src ="<?php echo Yii::app()->request->baseUrl?>/images/email.png" style="width=500px; height:500px; float:right;">
+            <img src ="<?php echo Yii::app()->request->baseUrl?>/images/email_sent.jpg" style="width=500px; height:500px; float:right;">
 
-            </div>
-        
-
-        <div class="cleaner"></div>
-    </div>
-</div> <!-- end of wrapper -->

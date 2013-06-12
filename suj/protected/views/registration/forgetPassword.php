@@ -1,10 +1,9 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Forget Password';
 $this->breadcrumbs=array(
 	'Forget Password',
 );
+$this->pageTitle = 'Forget Password | '.Yii::app()->params['pageTitle'];
 ?>
-<title>Forget Password | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
          
                 <h3>Request for Username and Password</h3>

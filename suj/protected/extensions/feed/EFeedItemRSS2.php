@@ -30,10 +30,11 @@ class EFeedItemRSS2 extends EFeedItemAbstract{
 	 * @see EFeedItemAbstract::setDate()
 	 */
 	public function setDate( $date ){
-		if(!is_numeric( $date )) $date = strtotime( $date );
+		date_default_timezone_set('Asia/Singapore');
+                if(!is_numeric( $date )) $date = strtotime( $date );
 		
 		$date = date( DATE_RSS, $date );
-		
+                
 		$this->addTag( 'pubDate', $date );
 	}
 	/**
@@ -115,5 +116,7 @@ class EFeedItemRSS2 extends EFeedItemAbstract{
 		
 		$this->addTag('enclosure','',$attributes);
 	}
+        
+      
 }
  

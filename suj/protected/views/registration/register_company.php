@@ -1,10 +1,10 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Register a ';
 $this->breadcrumbs = array(
     'Register a Company',
 );
+$this->pageTitle = 'Register Company | '.Yii::app()->params['pageTitle'];
+
 ?>
-<title>Register Company | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <p>
 Please fill out the form with your particulars

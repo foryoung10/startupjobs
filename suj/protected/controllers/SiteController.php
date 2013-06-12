@@ -159,4 +159,12 @@ class SiteController extends Controller
         }
         $this->render('login', array('forget' => $forget));
     }   
+    public function actionFeeds()    {
+
+        $this->render('feeds'); 
+                    //array('feed'=>$feed));
+        
+    }
+    
+    
 }

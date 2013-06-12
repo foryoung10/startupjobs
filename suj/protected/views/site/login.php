@@ -1,16 +1,10 @@
 <?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
-
-$this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
 );
+$this->pageTitle = 'Login | '.Yii::app()->params['pageTitle'];
+
 ?>
-
-<title>Login | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
-
 <h1>Login</h1>
 
 <p>Please fill out the following form abc with your login credentials:</p>

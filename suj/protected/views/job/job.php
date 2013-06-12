@@ -1,11 +1,14 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Job';
 $this->breadcrumbs = array(
-    'Job',
+    $job->title,
 );
+$this->pageTitle = "Startup Hire: {$job->title} {$company->cname} {$job->location}";
+$this->pageDesc = $job->description;
+$this->pageOgTitle = "{$job->title} {$company->cname} {$job->location}";
+$this->pageOgDesc= $job->description;
+$this->pageOgImage='/images/company/180/'.$company->image;
+
 ?>
-v
-<title>StartUp Hire: <?php echo "{$job->title} {$company->cname} {$job->location}"?></title>
 
               <?php $url = str_replace(' ','-',$company->cname);?> 
               <h1><?php echo CHtml::encode($job->title); ?></h1>      

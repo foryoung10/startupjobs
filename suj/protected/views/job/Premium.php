@@ -1,10 +1,9 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - All jobs';
 $this->breadcrumbs = array(
     'All Jobs',
 );
+$this->pageTitle = 'Go Premium | '.Yii::app()->params['pageTitle'];
 ?>
-<title>Go Premium | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 
       <h1>Premium</h1>

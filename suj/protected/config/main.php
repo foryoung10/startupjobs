@@ -22,6 +22,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
                 'application.extensions.yii-mail.*',
+                'application.helpers.*',
                 
             ),
 
@@ -56,7 +57,15 @@ return array(
                 
                  ),
 		// uncomment the following to enable URLs in path-format
-		'Paypal' => array(
+		'image'=>array(
+                            'class'=>'application.extensions.image.CImageComponent',
+                            // GD or ImageMagick
+                            'driver'=>'GD',
+                            // ImageMagick setup path
+                            'params'=>array('directory'=>'/opt/local/bin'),
+                ),
+            
+                'Paypal' => array(
                             'class'=>'paypal.components.Paypal',
                             'apiUsername' => 'foryoung89-facilitator_api1.gmail.com',
                             'apiPassword' => '1370866813',
@@ -161,5 +170,8 @@ return array(
 		'adminEmail'=>'webmaster@example.com',
                 'job_limit'=>'3',
                 'job_expire'=>'90',
-	),
+                'pageTitle'=>'StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups',
+                'pageDescription'=>'We bring great talents to great startups. StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | Starup Careers | Startup Career',
+                'image'=> "/images/suj.png",
+            ),
 );

@@ -1,8 +1,8 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Not approved';
 $this->breadcrumbs=array(
 	'Not approved',
 );
+$this->pageTitle = 'Not Approved | '.Yii::app()->params['pageTitle'];
 ?>
 
 

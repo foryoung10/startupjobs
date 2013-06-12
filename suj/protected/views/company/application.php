@@ -1,9 +1,8 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - Main';
 $this->breadcrumbs = array(
     'Main');
+$this->pageTitle = 'Application | '.Yii::app()->params['pageTitle'];
 ?>
-<title>Application | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <h1>Applications</h1>
 

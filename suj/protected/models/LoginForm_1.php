@@ -78,3 +78,15 @@ class LoginForm extends CFormModel
 			return false;
 	}
 }
+<meta content="abcdasfsasdf We bring great talents to great startups. StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | Starup Careers | Startup Career" name="description">
+<meta content="blog" property="og:type" >
+<meta content="asdfasdfasdfasdfasd asdfasStartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups" property="og:title">
+<meta content="asfdsafsdfas We bring great talents to great startups." property="og:description">
+<meta content="<?php Yii::app()->request->baseUrl;?>" property="og:url">
+<meta content="SasfsafasfsdafsdtartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups" property="og:site_name">
+<meta content="summary" name="twitter:card">
+<title>StartUp Hire: <?php echo "{$job->title} {$company->cname} {$job->location}"?></title>
+<?php $this->setPageTitle("{$job->title} {$company->cname} {$job->location}");?>
+<head>    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />   

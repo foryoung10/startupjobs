@@ -1,16 +1,9 @@
 <?php
-/* @var $this SiteController */
-/* @var $model ContactForm */
-/* @var $form CActiveForm */
-
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
 $this->breadcrumbs=array(
 	'Contact',
 );
+$this->pageTitle = 'Contact Us | '.Yii::app()->params['pageTitle'];
 ?>
-
-<title> Contact | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
-
 
 <h1>Connect with us</h1>
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
