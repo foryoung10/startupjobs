@@ -92,12 +92,14 @@ return array(
                         'showScriptName'=>false,
 			'rules'=>array(
 				
-                                '<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-                                
-                                //'<controller>/<action>'=>'<controller>/<action>',
-				//'<controller>/view'=>'<controller>/view',
+                               // '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				//'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				//'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                                //'<controller>'=>'<controller:\w+>/<action:\w+>/<id:\d+><title>',
+                                '<controller>'=>'<controller:\w+>/<action:\w+>/<JID:\d+>/<title:\w+>',
+                                'company'=>'company/view/<CID:\d+>/title/',
+                                //'<controller>/<title>'=>'<controller>/<action>',
+				'<controller>'=>'<controller:\w+>/<action:\w+>',
 			),
 		),
 		

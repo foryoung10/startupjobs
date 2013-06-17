@@ -54,14 +54,14 @@ class UserController extends Controller
                          if (!empty($uploadedFile)) {      
                                 $uploadedFile->saveAs(Yii::app()->basepath.'/../resume/'.$fileName);  // image will uplode to rootDirectory/banner    
                                  if ($oldfilename != $fileName) {
-                                        if ($oldfilename2 != null && $oldfilename2!=$filename )  //delete the file
+                                        if ($oldfilename2 != null && $oldfilename2 != $fileName )  //delete the file
                                                 unlink(Yii::app()->basePath . '/../resume/' . $oldfilename2);// image will uplode to rootDirectory/banner    
                                 }            
                          }   
                           if (!empty($uploadedPhoto)) {    
-                               $uploadedPhoto->saveAs(Yii::app()->basepath.'/../profile/'.$photoName);  
-                                        if ($oldfilename != $photoName) {
-                                                unlink(Yii::app()->basePath . '/../profile/' . $oldphotoname);
+                               $uploadedPhoto->saveAs(Yii::app()->basepath.'/../images/profile/'.$photoName);  
+                                        if ($oldphotoname != $photoName && $oldphotoname !=null) {
+                                                unlink(Yii::app()->basePath . '/../images/profile/' . $oldphotoname);
                                         }
                           }
                          
@@ -152,6 +152,13 @@ public function actionChangePassword()  {
                 }
             } 
         }
-    
+ public function actionProfile()    {
+     //if ($ID = null)    { 
+            $user=user::model()->find(':ID=ID', array('ID'=>Yii::app()->user->getID()));
+     //}
+      $this->render('profile', array('user'=>$user,));
+     
+     
+ }
 
 }

@@ -9,24 +9,31 @@ $this->pageOgDesc= $company->mission;
 $this->pageOgImage='/images/company/180/'.$company->image;
 ?>
 
-<?php /*
-"<style type="text/css">
-header
+
+<style type="text/css">
+.abc
 {
-    background-image:url('<?php echo Yii::app()->request->baseUrl.'/images/cover/'. $company->coverpicture ?>');
-    height: 136px;
-    width:100px;
-    background-color: #000000;
+    height: 20000px;
+    width:20000px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: -25px;
 }
-</style>" */
+</style>
+
+<?php // background-image:url('<?php echo Yii::app()->request->baseUrl.'/images/cover/'. $company->coverpicture ?>
+<?     // background-color: #000000;
+    
 ?>
-    <div>
-        
-        <!-- <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/company/<?php echo $company->image;?> height='80' width='80'" >
+<div class ="abc">  
+    <?php echo '<img src='.Yii::app()->request->baseUrl.'/images/cover/'. $company->coverpicture ?> height ='300' width = '1500'>
+</div>
+<!-- <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/company/<?php echo $company->image;?> height='80' width='80' left ='200px' top='200px' " >
         -->  
         <?php echo '<img src='.Yii::app()->request->baseUrl.'/images/company/'. $company->image.' height="200" width="200" >'?>
         <h1><?php echo CHtml::encode($company->cname); ?></h1>      

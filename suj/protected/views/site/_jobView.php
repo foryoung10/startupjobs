@@ -11,7 +11,7 @@
                     <?php $url1 = "{$data->company->cname} {$data->company->location}";?>
                     <?php   //$company= $data->company;
                             $image='<img src='.Yii::app()->request->baseUrl.'/images/company/'. $data->company->image.' style "height=110 width=110" >';
-                            echo CHtml::link($image, array('company/view', 'CID'=>$data->CID, $url1));?>
+                            echo CHtml::link($image, array('company/view', 'CID'=>$data->CID, 'title'=>$url1));?>
                     <?php //$url = str_replace(' ','-',$data->title);?> 
              
                          
@@ -27,7 +27,7 @@
 		         </div>
 		</div> 
      <?php $url2 = "{$data->title} {$data->company->cname} {$data->location}";?>
-     <?php echo CHtml::link($data->title, array('job/job', 'JID' => $data->JID, $url2,)); ?>   
+     <?php echo CHtml::link($data->title, array('job/job', 'JID' => $data->JID, 'title'=>$url2,)); ?>   
                 
 </div>
          

@@ -1,10 +1,9 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Apply';
+$this->pageTitle="Apply for Job | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups";
 $this->breadcrumbs=array(
 	'Apply',
 );
 ?>
-<title>Apply for Job | StartUp Jobs Asia | Startup Hire | Startup Hiring | Startup Recruiting | Startup Jobs | VC Hire | VC Jobs | Work In Startups</title>
 
 <h1>Confirmation</h1>
 <h3>You are submitting</h3>

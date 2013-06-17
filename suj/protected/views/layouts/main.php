@@ -38,6 +38,8 @@
                                                         array('label'=>'Manage Jobs', 'url'=>array('/job/manageJobs'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Applications', 'url'=>array('/company/application'),'visible'=>Yii::app()->user->isCompany()),
                                                         array('label'=>'Applications', 'url'=>array('/user/application'),'visible'=>Yii::app()->user->isMember()),
+                                                        array('label'=>'Profile', 'url'=>array('/user/profile'),'visible'=>Yii::app()->user->isMember()),
+                                                     
                                                         //   array('label'=>'Upgrade', 'url'=>array('/company/upgrade'),'visible'=>Yii::app()->user->isCompany()),
                                                       ),
                                     ),

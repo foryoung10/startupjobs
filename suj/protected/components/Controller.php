@@ -56,7 +56,7 @@ class Controller extends CController
         echo "\t".'<meta property="og:description" content="',CHtml::encode($this->pageOgDesc),'">'.PHP_EOL;
     }
     if ( !empty($this->pageOgImage) ) {
-        echo "\t".'<meta property="og:image" content="'.Yii::app()->request->baseUrl.''.$this->pageOgImage.'">'.PHP_EOL;
+        echo "\t".'<meta property="og:image" content="'.Yii::app()->getBaseUrl(true).''.$this->pageOgImage.'">'.PHP_EOL;
     }
 }
         
